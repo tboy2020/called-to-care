@@ -1,0 +1,1164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#122a4a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Called to Care">
+<title>Called to Care &middot; HESI A2 Prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="manifest" href='data:application/manifest+json,{"name":"Called to Care","short_name":"Called to Care","start_url":".","display":"standalone","background_color":"%23122a4a","theme_color":"%23122a4a"}'>
+<style>
+:root{
+  --navy:#122a4a; --navy-deep:#0d1f38; --gold:#c69a3e; --gold-soft:#e7cf92;
+  --verd:#2e7d70; --verd-deep:#1f5b52; --cream:#f7f2e8; --card:#fffdf8;
+  --ink:#20242b; --muted:#5c6470; --line:#e3dcc9; --line2:#efe8d6;
+  --hl:#ffe08a; --hlband:#fff6d9;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  color:var(--ink); background:var(--cream);
+  -webkit-text-size-adjust:100%; line-height:1.5;
+}
+h1,h2,h3,.disp{font-family:'Saira Condensed','Arial Narrow',system-ui,sans-serif;letter-spacing:.2px}
+.scr{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-style:italic;color:var(--verd-deep)}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--verd);outline-offset:2px;border-radius:6px}
+a{color:var(--verd-deep)}
+
+/* header */
+.top{
+  position:sticky;top:0;z-index:20;
+  background:linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);
+  color:#fdf8ec;padding:10px 16px;display:flex;align-items:center;gap:12px;
+  border-bottom:3px solid var(--gold);
+  padding-top:calc(10px + env(safe-area-inset-top));
+}
+.brand{display:flex;flex-direction:column;line-height:1.05}
+.brand .n{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:21px;letter-spacing:.4px}
+.brand .n b{color:var(--gold-soft);font-weight:700}
+.brand .s{font-size:11px;color:#c8d3e2;letter-spacing:.6px;text-transform:uppercase;margin-top:1px}
+.who{margin-left:auto;text-align:right;font-size:12px;color:#cdd8e6;max-width:45%}
+.who b{display:block;color:#fdf8ec;font-size:14px;font-weight:600}
+.homebtn{margin-left:auto;background:rgba(255,255,255,.12);color:#fdf8ec;border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;display:none}
+.homebtn.show{display:inline-block}
+
+/* layout */
+main{max-width:820px;margin:0 auto;padding:18px 16px 40px}
+.view{display:none}
+.view.on{display:block}
+
+/* home hero */
+.hero{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 18px;
+  box-shadow:0 1px 0 var(--line2);position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;
+  background:radial-gradient(circle,rgba(198,154,62,.14),transparent 70%);border-radius:50%}
+.hero .greet{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:30px;line-height:1.05;color:var(--navy)}
+.hero .greet span{color:var(--verd-deep)}
+.hero .lede{margin:8px 0 0;color:var(--muted);font-size:15px;max-width:60ch}
+.hero .verse{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-size:15px}
+.hero .verse .ref{display:block;font-style:normal;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.6px;
+  text-transform:uppercase;color:var(--gold);margin-top:4px}
+
+/* progress strip */
+.pstrip{display:flex;gap:10px;margin:16px 0 6px;flex-wrap:wrap}
+.pchip{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;flex:1;min-width:120px}
+.pchip .num{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:22px;color:var(--navy)}
+.pchip .lab{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+
+.secttitle{font-family:'Saira Condensed',sans-serif;font-weight:600;font-size:14px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--gold);margin:22px 2px 12px}
+
+/* subject grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.scard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px;text-align:left;
+  display:flex;flex-direction:column;gap:8px;transition:transform .12s,box-shadow .12s;border-left:5px solid var(--verd)}
+.scard:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(18,42,74,.10)}
+.scard:nth-child(6n+1){border-left-color:#b5432f}
+.scard:nth-child(6n+2){border-left-color:var(--verd)}
+.scard:nth-child(6n+3){border-left-color:var(--gold)}
+.scard:nth-child(6n+4){border-left-color:#3a6ea5}
+.scard:nth-child(6n+5){border-left-color:#7a5aa6}
+.scard:nth-child(6n+6){border-left-color:var(--verd-deep)}
+.scard .badge{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.5px;
+  color:#fff;background:var(--navy);align-self:flex-start;padding:3px 9px;border-radius:6px}
+.scard .t{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:19px;color:var(--navy);line-height:1.05}
+.scard .b{font-size:13px;color:var(--muted)}
+.scard .bar{height:7px;background:var(--line2);border-radius:99px;overflow:hidden;margin-top:2px}
+.scard .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--verd),var(--gold));width:0}
+.scard .meta{font-size:11px;color:var(--muted);display:flex;justify-content:space-between}
+
+/* subject view */
+.crumb{font-size:13px;color:var(--muted);margin:2px 0 10px}
+.shead{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:30px;color:var(--navy);line-height:1}
+.tabs{display:flex;gap:6px;margin:16px 0 18px;background:#efe7d4;padding:5px;border-radius:12px;flex-wrap:wrap}
+.tab{flex:1;min-width:70px;border:0;background:transparent;color:var(--muted);font-weight:600;font-size:13.5px;
+  padding:9px 8px;border-radius:9px}
+.tab.on{background:var(--card);color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.pane{display:none}
+.pane.on{display:block}
+
+/* lesson list */
+.llist{display:flex;flex-direction:column;gap:10px}
+.lrow{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 15px;display:flex;
+  align-items:center;gap:12px;text-align:left;width:100%}
+.lrow .ix{width:30px;height:30px;flex:none;border-radius:8px;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:'Saira Condensed',sans-serif;font-weight:700}
+.lrow.done .ix{background:var(--verd)}
+.lrow .lt{font-weight:600;font-size:15.5px;color:var(--navy)}
+.lrow .ls{font-size:12px;color:var(--muted)}
+.lrow .chk{margin-left:auto;font-size:12px;color:var(--verd-deep);font-weight:700;white-space:nowrap}
+
+/* reader */
+.reader{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.rbar{position:sticky;top:60px;z-index:10;background:#fbf6ea;border-bottom:1px solid var(--line);
+  padding:10px;display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.rbtn{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:9px;padding:8px 12px;
+  font-weight:600;font-size:13px;display:inline-flex;align-items:center;gap:6px}
+.rbtn.primary{background:var(--verd);color:#fff;border-color:var(--verd)}
+.rbtn.primary.playing{background:var(--gold);border-color:var(--gold);color:#3a2c07}
+.rbtn.sm{padding:8px 10px}
+.rgrp{display:flex;gap:4px;align-items:center;margin-left:auto}
+.rgrp .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-right:2px}
+.speed{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 8px;font-size:12.5px;color:var(--navy);font-weight:600}
+.speed.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.rbody{padding:20px 20px 26px;font-size:19px;line-height:1.75;color:#282d34}
+.rbody h3{font-size:22px;color:var(--navy);margin:22px 0 8px}
+.rbody p{margin:0 0 14px}
+.rbody .li{margin:0 0 9px 2px;padding-left:20px;position:relative}
+.rbody .li:before{content:"";position:absolute;left:2px;top:12px;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.rbody .sc{margin:16px 0;padding:12px 16px;border-left:4px solid var(--verd);background:#f3f7f4;border-radius:0 10px 10px 0}
+.rbody .sc .ref{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:11px;letter-spacing:.5px;
+  text-transform:uppercase;color:var(--gold);margin-top:5px}
+.rbody .note{margin:16px 0;padding:12px 16px;background:#fdf6e3;border:1px solid var(--gold-soft);border-radius:10px;font-size:16px}
+.rbody .note b{color:var(--verd-deep)}
+.w{border-radius:4px;padding:0 1px;cursor:pointer;transition:background .05s}
+.w.sent{background:var(--hlband)}
+.w.cur{background:var(--hl);box-shadow:0 0 0 1px rgba(198,154,62,.4)}
+.rfoot{padding:0 20px 22px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.donebtn{background:var(--verd);color:#fff;border:0;border-radius:10px;padding:11px 18px;font-weight:700;font-size:14px}
+.donebtn.isdone{background:#eef3ee;color:var(--verd-deep);border:1px solid var(--verd)}
+.navwrap{display:flex;gap:8px;margin-left:auto}
+.navbtn{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:10px;padding:11px 14px;font-weight:600;font-size:14px}
+.navbtn:disabled{opacity:.4}
+
+/* quiz */
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.qtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.qcount{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px}
+.qbar{height:6px;background:var(--line2);border-radius:99px;overflow:hidden;margin-bottom:16px}
+.qbar i{display:block;height:100%;background:var(--verd);width:0;transition:width .25s}
+.qq{font-size:18.5px;font-weight:600;color:var(--navy);line-height:1.4;margin-bottom:14px}
+.opt{display:block;width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;color:var(--ink);
+  border-radius:11px;padding:13px 15px;font-size:15.5px;margin-bottom:10px;transition:border-color .1s,background .1s}
+.opt:hover{border-color:var(--verd)}
+.opt.correct{border-color:var(--verd);background:#eef7f2}
+.opt.wrong{border-color:#c0492f;background:#fbeeea}
+.opt[disabled]{cursor:default}
+.opt .mk{float:right;font-weight:700}
+.expl{background:#fdf6e3;border:1px solid var(--gold-soft);border-radius:11px;padding:13px 15px;font-size:14.5px;margin-top:4px;display:none}
+.expl.show{display:block}
+.expl b{color:var(--verd-deep)}
+.qnav{margin-top:16px;display:flex;justify-content:flex-end}
+.qresult{text-align:center;padding:10px 4px}
+.qresult .big{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:48px;color:var(--navy)}
+.qresult .rlabel{color:var(--muted);margin-bottom:6px}
+.qresult .msg{font-size:16px;margin:6px auto 16px;max-width:40ch;color:var(--ink)}
+
+/* videos */
+.vadd{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.vadd .lab{font-weight:700;color:var(--navy);font-size:15px;margin-bottom:8px}
+.vadd input{width:100%;border:1.5px solid var(--line);border-radius:9px;padding:11px 12px;font-size:14px;margin-bottom:8px;font-family:inherit}
+.vadd .row{display:flex;gap:8px}
+.vadd .go{background:var(--verd);color:#fff;border:0;border-radius:9px;padding:11px 16px;font-weight:700;white-space:nowrap}
+.vadd .yt{background:#fff;border:1px solid var(--line);color:var(--navy);border-radius:9px;padding:11px 14px;font-weight:600;font-size:13.5px}
+.vhint{font-size:12px;color:var(--muted);margin-top:8px}
+.vitem{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:14px}
+.vframe{position:relative;width:100%;padding-top:56.25%;background:#000}
+.vframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vmeta{padding:10px 13px;display:flex;align-items:center;gap:10px}
+.vmeta .vt{font-weight:600;font-size:14px;color:var(--navy);flex:1}
+.vmeta .tag{font-size:10px;letter-spacing:.5px;text-transform:uppercase;background:#eef3ee;color:var(--verd-deep);padding:2px 7px;border-radius:5px;font-weight:700}
+.vmeta a{font-size:12.5px;font-weight:600;white-space:nowrap}
+.vmeta .rm{background:transparent;border:0;color:#b5432f;font-size:12.5px;font-weight:600}
+
+/* resources */
+.rlist{display:flex;flex-direction:column;gap:10px}
+.ritem{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 15px;display:block;text-decoration:none}
+.ritem .rt{font-weight:600;color:var(--navy);font-size:15px}
+.ritem .rd{font-size:13px;color:var(--muted);margin-top:2px}
+.ritem .ru{font-size:12px;color:var(--verd-deep);margin-top:4px;word-break:break-all}
+
+footer{text-align:center;padding:26px 16px 40px;color:var(--muted);font-size:12.5px}
+footer .amhg{font-family:'Saira Condensed',sans-serif;letter-spacing:2px;color:var(--gold);font-weight:600}
+
+/* name modal */
+.modal{position:fixed;inset:0;background:rgba(13,31,56,.72);z-index:50;display:flex;align-items:center;justify-content:center;padding:22px}
+.modal.hide{display:none}
+.mcard{background:var(--card);border-radius:18px;max-width:400px;width:100%;padding:26px;border-top:5px solid var(--gold);text-align:center}
+.mcard .mt{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:26px;color:var(--navy);line-height:1.05}
+.mcard .mv{margin:10px 0 4px;font-size:15px}
+.mcard .mp{color:var(--muted);font-size:14px;margin:12px 0 14px}
+.mcard input{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;font-size:16px;text-align:center;font-family:inherit;margin-bottom:12px}
+.mcard button{width:100%;background:var(--verd);color:#fff;border:0;border-radius:11px;padding:13px;font-weight:700;font-size:16px}
+
+canvas.confetti{position:fixed;inset:0;pointer-events:none;z-index:60}
+@media (prefers-reduced-motion: reduce){.scard{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <div class="n">Called to <b>Care</b></div>
+    <div class="s">HESI A2 Entrance Prep</div>
+  </div>
+  <div class="who" id="who"></div>
+  <button class="homebtn" id="homebtn">All subjects</button>
+</header>
+
+<main>
+  <section id="home" class="view on">
+    <div class="hero">
+      <div class="greet" id="greet">Welcome</div>
+      <p class="lede">Everything the HESI A2 entrance exam tests, in one place &mdash; read to you aloud, with the words lighting up as you follow along. Take it one lesson at a time. There is no rush here.</p>
+      <div class="verse scr">I was sick, and ye visited me&hellip; Inasmuch as ye have done it unto one of the least of these&hellip; ye have done it unto me.
+        <span class="ref">Matthew 25:36, 40 (KJV)</span></div>
+    </div>
+
+    <div class="pstrip">
+      <div class="pchip"><div class="num" id="pLessons">0</div><div class="lab">Lessons read</div></div>
+      <div class="pchip"><div class="num" id="pQuiz">0</div><div class="lab">Quizzes passed</div></div>
+      <div class="pchip"><div class="num" id="pPct">0%</div><div class="lab">Overall</div></div>
+    </div>
+
+    <div class="secttitle">The six sections</div>
+    <div class="grid" id="grid"></div>
+
+    <div class="secttitle">Good to know</div>
+    <div class="hero" style="padding:16px 18px">
+      <p class="lede" style="margin:0">Hondros&rsquo; RN (ADN) route has <b>no prerequisite college courses</b> &mdash; the gate is the HESI A2 exam (aim for 75%+). These six sections are exactly what it covers, and your agricultural-science background gives you a real head start on Anatomy and Biology. Study a little each day, and lean on the read-aloud whenever your eyes get tired.</p>
+      <div class="verse scr" style="margin-top:12px">And whatsoever ye do, do it heartily, as to the Lord, and not unto men.
+        <span class="ref">Colossians 3:23 (KJV)</span></div>
+    </div>
+  </section>
+
+  <section id="subject" class="view">
+    <div class="crumb" id="crumb"></div>
+    <div class="shead" id="shead"></div>
+    <div class="tabs">
+      <button class="tab on" data-pane="learn">Learn</button>
+      <button class="tab" data-pane="practice">Practice</button>
+      <button class="tab" data-pane="videos">Videos</button>
+      <button class="tab" data-pane="resources">Resources</button>
+    </div>
+    <div class="pane on" id="pane-learn"></div>
+    <div class="pane" id="pane-practice"></div>
+    <div class="pane" id="pane-videos"></div>
+    <div class="pane" id="pane-resources"></div>
+  </section>
+</main>
+
+<footer>
+  <div>Built with love for the journey into nursing.</div>
+  <div class="amhg">Glory to God alone &middot; AMHG</div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="mcard">
+    <div class="mt">Welcome, future nurse</div>
+    <div class="mv scr">The LORD giveth wisdom: out of his mouth cometh knowledge and understanding. &mdash; Proverbs 2:6</div>
+    <div class="mp">What may I call you?</div>
+    <input id="nameInput" type="text" placeholder="Your first name" autocomplete="given-name">
+    <button id="nameGo">Begin my prep</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   Called to Care — HESI A2 Prep  (ES5, single file)
+   ============================================================ */
+var DATA = [
+ {
+  key:"anatomy", badge:"A&P", name:"Anatomy & Physiology",
+  blurb:"How the body is built and how it works.",
+  search:"anatomy and physiology for nursing students introduction",
+  videos:[
+   {id:"uBGl2BujkPQ", t:"Intro to Anatomy & Physiology (Crash Course #1)"},
+   {id:"dITNtXNmhuA", t:"A&P Study Hacks for Nursing Students"}
+  ],
+  resources:[
+   {t:"Mometrix HESI A2 A&P review", d:"Free written review of the anatomy section.", u:"https://www.mometrix.com/academy/hesi-a2-anatomy-and-physiology-practice-test/"},
+   {t:"RegisteredNurseRN A&P notes", d:"Free lectures, notes and quizzes by body system.", u:"https://www.registerednursern.com/anatomy-and-physiology/"}
+  ],
+  lessons:[
+   {t:"How the Body Is Organized",
+    blocks:[
+     {type:"p",text:"Your body is built in levels, each one made of the level below it. It goes from smallest to largest: chemicals form cells, cells form tissues, tissues form organs, organs work together as organ systems, and all the systems together make the whole organism, which is you."},
+     {type:"h",text:"Directional terms"},
+     {type:"p",text:"To describe where a part is, we use standard directions from the anatomical position, a body standing up, facing forward, palms out."},
+     {type:"li",text:"Superior means toward the head, inferior means toward the feet."},
+     {type:"li",text:"Anterior means the front, posterior means the back."},
+     {type:"li",text:"Medial means toward the midline, lateral means away from it."},
+     {type:"li",text:"Proximal means closer to the trunk, distal means farther away, like the wrist compared to the shoulder."},
+     {type:"h",text:"Planes and cavities"},
+     {type:"p",text:"A sagittal plane divides the body into left and right, a frontal plane into front and back, and a transverse plane into top and bottom. The organs sit inside body cavities, mainly the dorsal cavity in the back and the larger ventral cavity in the front."},
+     {type:"note",text:"Tip: HESI loves directional terms. If you learn just these pairs cold, you will pick up several easy points."}
+    ]},
+   {t:"The Skeleton and the Muscles",
+    blocks:[
+     {type:"p",text:"The adult skeleton has about two hundred and six bones. It gives the body shape and support, protects soft organs like the brain and heart, works with muscles to create movement, stores minerals such as calcium, and makes blood cells inside the marrow."},
+     {type:"p",text:"The skeleton has two parts. The axial skeleton is the center line, the skull, spine and rib cage. The appendicular skeleton is the limbs and the girdles that attach them."},
+     {type:"h",text:"Three kinds of muscle"},
+     {type:"li",text:"Skeletal muscle is voluntary, meaning you control it. It moves your bones."},
+     {type:"li",text:"Cardiac muscle is involuntary and found only in the heart."},
+     {type:"li",text:"Smooth muscle is involuntary and lines hollow organs like the stomach and blood vessels."},
+     {type:"p",text:"Besides movement, muscles hold your posture and produce most of your body heat when they work."}
+    ]},
+   {t:"The Heart, Blood and Lungs",
+    blocks:[
+     {type:"p",text:"The heart has four chambers. The two upper chambers are the atria and the two lower chambers are the ventricles. Blood follows a set path: it returns from the body into the right atrium, drops into the right ventricle, and is pumped to the lungs. There it picks up oxygen and returns to the left atrium, drops into the left ventricle, and is pumped out to the whole body."},
+     {type:"note",text:"Remember: the left ventricle is the strongest chamber because it pushes oxygen-rich blood to the entire body."},
+     {type:"h",text:"Blood vessels"},
+     {type:"li",text:"Arteries carry blood away from the heart."},
+     {type:"li",text:"Veins carry blood back toward the heart."},
+     {type:"li",text:"Capillaries are tiny vessels where oxygen and nutrients are exchanged with the tissues."},
+     {type:"h",text:"Breathing"},
+     {type:"p",text:"Air travels down the throat and windpipe into the lungs, through smaller and smaller tubes, until it reaches tiny air sacs called alveoli. This is where oxygen enters the blood and carbon dioxide leaves it. The diaphragm, a large muscle under the lungs, pulls air in and out."}
+    ]},
+   {t:"Nerves, Digestion and the Kidneys",
+    blocks:[
+     {type:"h",text:"The nervous system"},
+     {type:"p",text:"The nervous system has two parts. The central nervous system is the brain and spinal cord. The peripheral nervous system is all the nerves that branch out to the rest of the body. The basic cell that carries signals is the neuron."},
+     {type:"h",text:"Digestion"},
+     {type:"p",text:"Food travels from the mouth down the esophagus to the stomach, then into the small intestine, where most nutrients are absorbed, and finally the large intestine, which absorbs water. The liver, gallbladder and pancreas are helper organs that add juices and enzymes."},
+     {type:"h",text:"The urinary system"},
+     {type:"p",text:"The kidneys filter waste from the blood and make urine. Urine drains through the ureters into the bladder, and leaves the body through the urethra. This system keeps the body's water and salts in balance, an idea called homeostasis."}
+    ]}
+  ],
+  questions:[
+   {q:"Which heart chamber pumps oxygen-rich blood to the entire body?",o:["Right atrium","Left ventricle","Right ventricle","Left atrium"],a:1,e:"The left ventricle is the strongest chamber; it pushes oxygenated blood out to the whole body."},
+   {q:"The term that means 'toward the head' is:",o:["Inferior","Distal","Superior","Lateral"],a:2,e:"Superior means toward the head; inferior means toward the feet."},
+   {q:"Gas exchange in the lungs happens in the:",o:["Trachea","Bronchi","Alveoli","Diaphragm"],a:2,e:"Alveoli are the tiny air sacs where oxygen enters the blood and carbon dioxide leaves."},
+   {q:"Which muscle type is found ONLY in the heart?",o:["Skeletal","Smooth","Cardiac","Voluntary"],a:2,e:"Cardiac muscle is involuntary and exists only in the heart."},
+   {q:"The central nervous system is made up of the:",o:["Brain and spinal cord","Heart and lungs","Nerves in the arms and legs","Brain and kidneys"],a:0,e:"The central nervous system is the brain and spinal cord; the peripheral nerves branch out from it."},
+   {q:"Which organ filters the blood to form urine?",o:["Liver","Kidney","Stomach","Spleen"],a:1,e:"The kidneys filter waste from the blood and produce urine."},
+   {q:"A term meaning 'away from the midline of the body' is:",o:["Medial","Proximal","Lateral","Superior"],a:2,e:"Lateral means away from the midline; medial means toward it."},
+   {q:"Blood vessels that carry blood AWAY from the heart are:",o:["Veins","Capillaries","Arteries","Alveoli"],a:2,e:"Arteries carry blood away from the heart; veins return it."},
+   {q:"Which plane divides the body into left and right halves?",o:["Transverse","Frontal","Sagittal","Coronal"],a:2,e:"A sagittal plane divides the body into left and right sides."}
+  ]
+ },
+ {
+  key:"biology", badge:"Bio", name:"Biology",
+  blurb:"Cells, molecules, DNA and genetics.",
+  search:"biology basics cells for nursing HESI review",
+  videos:[
+   {id:"jsDxw63QqK0", t:"A Tour of the Cell (Crash Course Biology #23)"}
+  ],
+  resources:[
+   {t:"Mometrix HESI A2 Biology review", d:"Free written biology review and practice.", u:"https://www.mometrix.com/academy/hesi-a2-biology-practice-test/"},
+   {t:"Khan Academy Biology", d:"Free video lessons on cells, DNA and more.", u:"https://www.khanacademy.org/science/biology"}
+  ],
+  lessons:[
+   {t:"The Cell, the Unit of Life",
+    blocks:[
+     {type:"p",text:"Every living thing is made of cells. This is the heart of cell theory, which says three things: all living things are made of one or more cells, the cell is the basic unit of life, and all cells come from other cells."},
+     {type:"h",text:"Two main cell types"},
+     {type:"li",text:"Prokaryotic cells have no nucleus. Bacteria are the classic example."},
+     {type:"li",text:"Eukaryotic cells have a true nucleus that holds the DNA. Plant and animal cells, including yours, are eukaryotic."},
+     {type:"p",text:"Cells are small for a good reason. A small cell can move nutrients in and wastes out quickly across its surface, which a very large cell could not do."}
+    ]},
+   {t:"Inside the Cell",
+    blocks:[
+     {type:"p",text:"Inside a cell are tiny working parts called organelles, each with its own job."},
+     {type:"li",text:"The nucleus holds the DNA and controls the cell's activities."},
+     {type:"li",text:"Mitochondria make energy in the form of a molecule called ATP. They are often called the powerhouse of the cell."},
+     {type:"li",text:"Ribosomes build proteins."},
+     {type:"li",text:"The endoplasmic reticulum moves materials, and the Golgi apparatus packages them."},
+     {type:"li",text:"The cell membrane is a selective barrier that decides what enters and leaves."},
+     {type:"p",text:"Plant cells add two parts animal cells do not have: a stiff cell wall and green chloroplasts that capture sunlight to make food."}
+    ]},
+   {t:"Molecules and Movement",
+    blocks:[
+     {type:"h",text:"The four molecules of life"},
+     {type:"li",text:"Carbohydrates give quick energy."},
+     {type:"li",text:"Lipids are fats that store energy and build membranes."},
+     {type:"li",text:"Proteins build structures and act as enzymes; they are made of amino acids."},
+     {type:"li",text:"Nucleic acids, DNA and RNA, carry genetic information."},
+     {type:"h",text:"How things cross the membrane"},
+     {type:"p",text:"Diffusion is when particles spread from where there are many to where there are few. Osmosis is the same idea but for water moving across a membrane. Both of these are free and need no energy. Active transport moves particles the hard way, against the flow, and it must spend energy to do it."}
+    ]},
+   {t:"DNA, Division and Genetics",
+    blocks:[
+     {type:"p",text:"DNA is shaped like a twisted ladder called a double helix. Its rungs are pairs of bases, and they always pair the same way: adenine with thymine, and cytosine with guanine. DNA holds the instructions to build proteins."},
+     {type:"h",text:"Two kinds of cell division"},
+     {type:"li",text:"Mitosis makes two identical body cells, used for growth and repair."},
+     {type:"li",text:"Meiosis makes sex cells, or gametes, with half the usual chromosomes, used for reproduction."},
+     {type:"h",text:"Simple genetics"},
+     {type:"p",text:"Traits are passed by genes. A dominant trait shows up even if only one copy is present, while a recessive trait needs two copies. The set of genes is the genotype, and the trait you can see is the phenotype."}
+    ]}
+  ],
+  questions:[
+   {q:"Which organelle is called the 'powerhouse of the cell'?",o:["Nucleus","Ribosome","Mitochondrion","Golgi apparatus"],a:2,e:"Mitochondria produce energy (ATP), earning the nickname powerhouse of the cell."},
+   {q:"A cell that has NO nucleus is called:",o:["Eukaryotic","Prokaryotic","Plant cell","Animal cell"],a:1,e:"Prokaryotic cells, such as bacteria, lack a nucleus."},
+   {q:"Which part of the cell holds the DNA and controls its activities?",o:["Nucleus","Cell membrane","Cytoplasm","Lysosome"],a:0,e:"The nucleus stores DNA and directs the cell."},
+   {q:"The movement of water across a membrane is called:",o:["Diffusion","Osmosis","Active transport","Respiration"],a:1,e:"Osmosis is specifically the movement of water across a membrane."},
+   {q:"In DNA, adenine always pairs with:",o:["Guanine","Cytosine","Thymine","Uracil"],a:2,e:"Adenine pairs with thymine; cytosine pairs with guanine."},
+   {q:"Cell division that produces sex cells (gametes) is:",o:["Mitosis","Meiosis","Diffusion","Osmosis"],a:1,e:"Meiosis produces gametes with half the chromosome number."},
+   {q:"The building blocks of proteins are:",o:["Sugars","Fatty acids","Amino acids","Nucleotides"],a:2,e:"Proteins are made of amino acids."},
+   {q:"Which structure is found in plant cells but NOT animal cells?",o:["Nucleus","Mitochondria","Cell wall","Ribosome"],a:2,e:"Plant cells have a rigid cell wall (and chloroplasts) that animal cells lack."},
+   {q:"The trait you can actually observe is called the:",o:["Genotype","Phenotype","Allele","Chromosome"],a:1,e:"The phenotype is the visible trait; the genotype is the underlying genes."}
+  ]
+ },
+ {
+  key:"math", badge:"Math", name:"Basic Math",
+  blurb:"Fractions, percentages, ratios and conversions.",
+  search:"HESI A2 math review fractions ratios conversions",
+  videos:[
+   {id:"YrnzEbq94GY", t:"HESI Math Review: Fractions & Decimals"}
+  ],
+  resources:[
+   {t:"Mometrix HESI A2 Math practice", d:"Free practice questions with worked answers.", u:"https://www.mometrix.com/academy/hesi-a2-math-practice-test/"},
+   {t:"Khan Academy Arithmetic", d:"Free lessons on fractions, decimals and percents.", u:"https://www.khanacademy.org/math/arithmetic"}
+  ],
+  lessons:[
+   {t:"Working with Fractions",
+    blocks:[
+     {type:"p",text:"A fraction shows part of a whole. The top number is the numerator and the bottom number is the denominator. In one half, one is the numerator and two is the denominator."},
+     {type:"h",text:"The rules"},
+     {type:"li",text:"To add or subtract fractions, first make the denominators the same, then add or subtract the top numbers."},
+     {type:"li",text:"To multiply, just multiply straight across, top times top and bottom times bottom."},
+     {type:"li",text:"To divide, flip the second fraction and then multiply."},
+     {type:"p",text:"Here is an example. To add one third and one fourth, change them to twelfths: four twelfths plus three twelfths equals seven twelfths."}
+    ]},
+   {t:"Decimals and Percentages",
+    blocks:[
+     {type:"p",text:"A fraction, a decimal, and a percent are just three ways to write the same value. Three fourths equals zero point seven five equals seventy five percent."},
+     {type:"h",text:"How to convert"},
+     {type:"li",text:"To turn a fraction into a decimal, divide the top by the bottom. Three divided by four is zero point seven five."},
+     {type:"li",text:"To turn a decimal into a percent, move the point two places right. Zero point seven five becomes seventy five percent."},
+     {type:"li",text:"To find a percent of a number, multiply. Twenty percent of eighty is zero point two times eighty, which is sixteen."}
+    ]},
+   {t:"Ratios, Proportions and Dosage",
+    blocks:[
+     {type:"p",text:"A ratio compares two amounts, such as four nurses to one doctor. A proportion says two ratios are equal, and you solve it by cross multiplying."},
+     {type:"note",text:"This is the exact skill behind medicine math. If three tablets equal one hundred fifty milligrams, how many tablets give two hundred fifty milligrams? Each tablet is fifty milligrams, so you need five tablets."},
+     {type:"h",text:"Solving for the unknown"},
+     {type:"p",text:"When you see a letter like x standing for a missing number, your goal is to get x by itself. Whatever you do to one side of the equals sign, you must do to the other side too."}
+    ]},
+   {t:"Conversions, Roman Numerals and Time",
+    blocks:[
+     {type:"h",text:"The metric system"},
+     {type:"p",text:"Metric units move by tens. One kilogram is one thousand grams, and one gram is one thousand milligrams. One liter is one thousand milliliters. Nurses use grams, milligrams and milliliters every day."},
+     {type:"h",text:"Roman numerals"},
+     {type:"p",text:"Prescriptions sometimes use Roman numerals. The values are I is one, V is five, X is ten, L is fifty, C is one hundred, D is five hundred, and M is one thousand. A smaller numeral before a larger one means subtract, so I V is four; after a larger one it means add, so V I is six."},
+     {type:"h",text:"Military time"},
+     {type:"p",text:"Hospitals use a twenty four hour clock. After twelve noon, keep counting: one in the afternoon is thirteen hundred, and two thirty in the afternoon is fourteen thirty."}
+    ]}
+  ],
+  questions:[
+   {q:"What is 1/3 + 1/4 ?",o:["2/7","7/12","1/7","5/12"],a:1,e:"Use a common denominator of 12: 4/12 + 3/12 = 7/12."},
+   {q:"Convert 3/4 to a decimal.",o:["0.34","0.43","0.75","0.70"],a:2,e:"Divide 3 by 4 to get 0.75."},
+   {q:"If 3 tablets contain 150 mg, how many tablets provide 250 mg?",o:["4","5","6","2.5"],a:1,e:"Each tablet is 150 ÷ 3 = 50 mg. Then 250 ÷ 50 = 5 tablets."},
+   {q:"What is 20% of 80?",o:["16","18","1.6","40"],a:0,e:"20% is 0.20; 0.20 × 80 = 16."},
+   {q:"The Roman numeral XIV equals:",o:["12","14","16","19"],a:1,e:"X is 10 and IV is 4, so XIV is 14."},
+   {q:"The ratio of nurses to doctors is 4:1. If there are 20 doctors, how many nurses are there?",o:["24","40","80","16"],a:2,e:"Set up 4/1 = x/20; cross-multiply to get x = 80 nurses."},
+   {q:"How many milligrams are in 1 gram?",o:["10","100","1,000","0.001"],a:2,e:"1 gram = 1,000 milligrams in the metric system."},
+   {q:"What time is 1430 in standard (a.m./p.m.) time?",o:["4:30 a.m.","2:30 p.m.","12:30 p.m.","4:30 p.m."],a:1,e:"Subtract 12 from 14 to get 2, so 1430 is 2:30 p.m."},
+   {q:"Multiply 2/3 × 3/5.",o:["6/8","5/15","2/5","6/15 only"],a:2,e:"Multiply straight across: 6/15, which simplifies to 2/5."}
+  ]
+ },
+ {
+  key:"reading", badge:"Read", name:"Reading Comprehension",
+  blurb:"Main idea, details, inference and tone.",
+  search:"reading comprehension main idea inference strategies lesson",
+  videos:[],
+  resources:[
+   {t:"Mometrix reading comprehension videos", d:"Free videos on main idea, inference and more.", u:"https://www.mometrix.com/academy/reading-comprehension/"},
+   {t:"Mometrix HESI A2 reading practice", d:"Practice passages with answer explanations.", u:"https://www.mometrix.com/academy/hesi-a2-reading-comprehension-practice-test/"}
+  ],
+  lessons:[
+   {t:"Finding the Main Idea",
+    blocks:[
+     {type:"p",text:"The main idea is the single most important point a passage is trying to make. It is different from the topic. The topic is what the passage is about in a word or two, like exercise, while the main idea is the full point, like regular exercise improves your health."},
+     {type:"h",text:"Where to look"},
+     {type:"li",text:"Check the first and last sentences of a paragraph, where the main idea often lives."},
+     {type:"li",text:"Notice words or ideas that repeat, because repetition signals importance."},
+     {type:"p",text:"The other sentences are supporting details. They give examples, reasons and facts that back up the main idea."}
+    ]},
+   {t:"Details, Inference and Context",
+    blocks:[
+     {type:"p",text:"Supporting details answer the small questions: who, what, when and where. When a question asks about a specific fact, the answer is usually stated right in the passage, so go back and find it."},
+     {type:"h",text:"Reading between the lines"},
+     {type:"p",text:"An inference is a conclusion you reach by combining clues in the text with common sense. If a passage says the sky darkened and the wind began to howl, you can infer a storm is coming, even though it never says so directly."},
+     {type:"h",text:"Context clues"},
+     {type:"p",text:"When you meet a hard word, the sentence around it often explains it. If you read that the patient was lethargic, sluggish and drowsy, the words after the comma tell you that lethargic means tired and slow."}
+    ]},
+   {t:"Purpose, Tone and Fact vs Opinion",
+    blocks:[
+     {type:"h",text:"Why did the author write this?"},
+     {type:"p",text:"Authors write to inform, to persuade, to entertain, or to instruct. A how-to article is written to instruct or inform, while an opinion column is written to persuade."},
+     {type:"h",text:"Tone"},
+     {type:"p",text:"Tone is the author's attitude, and you sense it from the words they choose. The same news can be told in a hopeful tone or an angry tone."},
+     {type:"h",text:"Fact or opinion"},
+     {type:"p",text:"A fact can be proven true, such as water boils at one hundred degrees Celsius. An opinion is a belief or feeling that others might disagree with, such as summer is the best season."}
+    ]},
+   {t:"Smart Reading, Even When It's Hard",
+    blocks:[
+     {type:"note",text:"This lesson is for you especially. Reading slowly does not mean reading poorly. Careful readers often understand more than fast ones."},
+     {type:"li",text:"Skim the passage first to get the topic before you read closely."},
+     {type:"li",text:"Read in small chunks, one sentence at a time, and let the audio guide your eyes across the words."},
+     {type:"li",text:"If a sentence does not make sense, read it again. Rereading is a smart move, not a weakness."},
+     {type:"li",text:"After each paragraph, pause and say the point in your own words."},
+     {type:"li",text:"Remember that the answer is almost always in the passage. When unsure, go back and hunt for it."},
+     {type:"p",text:"Take your time. Understanding matters far more than speed, and speed grows on its own with practice."}
+    ]}
+  ],
+  questions:[
+   {q:"The main idea of a passage is best described as:",o:["The first word of the passage","The central point the passage makes","Any interesting detail","The longest sentence"],a:1,e:"The main idea is the overall point; details support it."},
+   {q:"An inference is:",o:["A fact stated directly","A conclusion drawn from clues and reasoning","A spelling rule","The title of the passage"],a:1,e:"An inference combines textual clues with logic to reach a conclusion not stated outright."},
+   {q:"\"The sky darkened and the wind began to howl.\" You can infer that:",o:["It is a sunny day","A storm is approaching","It is night time","The passage is about music"],a:1,e:"Darkening skies and howling wind are clues that a storm is coming."},
+   {q:"Which of these is a FACT rather than an opinion?",o:["Summer is the best season","Water boils at 100°C","Blue is a calming color","Everyone should exercise"],a:1,e:"A fact can be proven; the boiling point of water can be measured."},
+   {q:"An author who writes a set of step-by-step directions is mainly trying to:",o:["Entertain","Persuade","Instruct","Frighten"],a:2,e:"Step-by-step directions are meant to instruct or inform."},
+   {q:"\"The patient was lethargic, sluggish and drowsy.\" Using context, 'lethargic' means:",o:["Cheerful","Tired and slow","Angry","Hungry"],a:1,e:"The words after the comma define it: sluggish and drowsy."},
+   {q:"A good FIRST step when reading a passage is to:",o:["Answer questions before reading","Skim to find the topic","Memorize every word","Skip the first paragraph"],a:1,e:"Skimming first gives you the topic and a mental map of the passage."},
+   {q:"Supporting details in a passage exist to:",o:["Confuse the reader","Back up and explain the main idea","Replace the main idea","End the passage"],a:1,e:"Details provide examples, facts and reasons that support the main idea."}
+  ]
+ },
+ {
+  key:"grammar", badge:"Gram", name:"Grammar",
+  blurb:"Parts of speech, agreement and usage.",
+  search:"basic English grammar parts of speech lesson",
+  videos:[
+   {id:"6Dna4Tl_YlA", t:"The Parts of Speech in English (Grammar Lesson)"}
+  ],
+  resources:[
+   {t:"Mometrix HESI A2 grammar practice", d:"Free grammar review and practice questions.", u:"https://www.mometrix.com/academy/hesi-a2-grammar-practice-test/"},
+   {t:"Purdue OWL grammar", d:"Trusted, free grammar and punctuation guides.", u:"https://owl.purdue.edu/owl/general_writing/grammar/index.html"}
+  ],
+  lessons:[
+   {t:"The Parts of Speech",
+    blocks:[
+     {type:"p",text:"Every word in a sentence does a job, and grammar names those jobs the parts of speech."},
+     {type:"li",text:"A noun names a person, place or thing, like nurse, hospital or chart."},
+     {type:"li",text:"A pronoun stands in for a noun, like she, it or they."},
+     {type:"li",text:"A verb shows action or being, like give, run or is."},
+     {type:"li",text:"An adjective describes a noun, like gentle or sharp."},
+     {type:"li",text:"An adverb describes a verb and often tells how, like quickly."},
+     {type:"li",text:"Prepositions, conjunctions and interjections connect ideas or show feeling, like in, and, and oh."}
+    ]},
+   {t:"Agreement That Sounds Right",
+    blocks:[
+     {type:"h",text:"Subject and verb"},
+     {type:"p",text:"A singular subject takes a singular verb, and a plural subject takes a plural verb. The nurse is ready. The nurses are ready. Watch out for extra words between the subject and the verb, because they can trick your ear."},
+     {type:"h",text:"Pronouns"},
+     {type:"p",text:"A pronoun must match the noun it replaces. If the noun is singular, the pronoun is singular. Each student brought his or her book, not their book, when we mean one student."}
+    ]},
+   {t:"Words People Mix Up",
+    blocks:[
+     {type:"li",text:"There points to a place, their shows possession, and they're means they are."},
+     {type:"li",text:"Your shows possession, and you're means you are."},
+     {type:"li",text:"Its shows possession, and it's means it is."},
+     {type:"li",text:"To, too and two: to a place, too meaning also, and two the number."},
+     {type:"li",text:"Affect is usually a verb, an action; effect is usually a noun, a result. The medicine had a strong effect."}
+    ]},
+   {t:"Sentences and Punctuation",
+    blocks:[
+     {type:"p",text:"A complete sentence needs a subject, a verb, and a complete thought. A fragment is missing one of these, and a run-on jams two sentences together without proper punctuation."},
+     {type:"h",text:"A few comma rules"},
+     {type:"li",text:"Use commas to separate items in a list."},
+     {type:"li",text:"Use a comma before and, but or or when it joins two complete sentences."},
+     {type:"li",text:"Use an apostrophe to show possession, like the nurse's badge, or a contraction, like don't."},
+     {type:"p",text:"Always capitalize the first word of a sentence and the names of specific people and places."}
+    ]}
+  ],
+  questions:[
+   {q:"Which word is a NOUN?",o:["Quickly","Hospital","Gentle","Under"],a:1,e:"Hospital names a place, so it is a noun."},
+   {q:"Choose the correct verb: \"The nurses ___ ready for the shift.\"",o:["is","was","are","am"],a:2,e:"The plural subject 'nurses' needs the plural verb 'are'."},
+   {q:"Complete correctly: \"___ going to the clinic this morning.\"",o:["Their","There","They're","Theyre"],a:2,e:"They're means 'they are', which fits the sentence."},
+   {q:"Choose the correct word: \"The dog wagged ___ tail.\"",o:["it's","its","its'","it is"],a:1,e:"Its shows possession; it's would mean 'it is'."},
+   {q:"Choose the correct word: \"The new medicine had a strong ___.\"",o:["affect","effect","effekt","affects"],a:1,e:"Effect is the noun meaning a result."},
+   {q:"Which is a COMPLETE sentence?",o:["Running down the hall.","Because she was late.","The patient rested.","After the long night."],a:2,e:"'The patient rested' has a subject, a verb and a complete thought."},
+   {q:"A word that describes a verb (often telling 'how') is a(n):",o:["Noun","Adjective","Adverb","Pronoun"],a:2,e:"Adverbs describe verbs and often answer how, when or where."},
+   {q:"Choose the correct word: \"___ appointment is at noon.\"",o:["You're","Your","Yours","Youre"],a:1,e:"Your shows possession of the appointment."}
+  ]
+ },
+ {
+  key:"vocab", badge:"Vocab", name:"Vocabulary & General Knowledge",
+  blurb:"Everyday and medical word meanings.",
+  search:"medical terminology prefixes suffixes roots for nursing",
+  videos:[
+   {id:"WJumaPino3Q", t:"Medical Terminology: Prefix, Root, Suffix"}
+  ],
+  resources:[
+   {t:"Mometrix HESI A2 vocabulary practice", d:"Free vocabulary review and practice.", u:"https://www.mometrix.com/academy/hesi-a2-vocabulary-practice-test/"},
+   {t:"GlobalRPH medical terms list", d:"A comprehensive list of prefixes, roots and suffixes.", u:"https://globalrph.com/medical-terms-introduction/"}
+  ],
+  lessons:[
+   {t:"How Medical Words Are Built",
+    blocks:[
+     {type:"p",text:"Most medical words are made of smaller parts: a prefix at the front, a root in the middle, and a suffix at the end. Once you learn the parts, you can decode long words you have never seen."},
+     {type:"note",text:"Example: hypothyroidism breaks into hypo, meaning low, thyroid, the gland, and ism, a condition. Put together, it means a condition of a low thyroid."},
+     {type:"p",text:"You do not have to memorize thousands of words. Learn a few hundred word parts and you can understand thousands of terms."}
+    ]},
+   {t:"Common Prefixes",
+    blocks:[
+     {type:"li",text:"Hyper means high or too much; hypo means low or too little."},
+     {type:"li",text:"Brady means slow; tachy means fast."},
+     {type:"li",text:"A or an means without; dys means difficult or painful."},
+     {type:"li",text:"Peri means around; intra means within; inter means between."},
+     {type:"li",text:"Pre means before; post means after."},
+     {type:"p",text:"So bradycardia is a slow heart and tachycardia is a fast heart, because cardia points to the heart."}
+    ]},
+   {t:"Common Roots and Suffixes",
+    blocks:[
+     {type:"h",text:"Roots name the body part"},
+     {type:"li",text:"Cardio is heart, gastro is stomach, hepato is liver, nephro is kidney."},
+     {type:"li",text:"Neuro is nerve, osteo is bone, pulmo is lung, dermo is skin, hemo is blood."},
+     {type:"h",text:"Suffixes tell what is happening"},
+     {type:"li",text:"Itis means inflammation, so gastritis is an inflamed stomach."},
+     {type:"li",text:"Ectomy means surgical removal, so appendectomy is removing the appendix."},
+     {type:"li",text:"Ology means the study of, and pathy means disease."}
+    ]},
+   {t:"Everyday HESI Vocabulary",
+    blocks:[
+     {type:"p",text:"The exam also tests plain but useful words that appear in health care. Here are some worth knowing."},
+     {type:"li",text:"Abstain means to hold back from something; adverse means harmful."},
+     {type:"li",text:"Dilate means to widen; distended means swollen or stretched."},
+     {type:"li",text:"Exacerbate means to make worse; lethargic means very tired and slow."},
+     {type:"li",text:"Occluded means blocked; patent means open and clear."},
+     {type:"li",text:"Potent means strong; void means to empty, often meaning to urinate."},
+     {type:"li",text:"Benign means harmless or not cancerous; comply means to follow instructions."}
+    ]}
+  ],
+  questions:[
+   {q:"The prefix 'hypo-' means:",o:["Above or too much","Below or too little","Around","Fast"],a:1,e:"Hypo means low or below normal; hyper means high or above."},
+   {q:"The suffix '-itis' means:",o:["Removal","Inflammation","Study of","Pain"],a:1,e:"-itis means inflammation, as in tonsillitis or gastritis."},
+   {q:"The word 'tachycardia' means:",o:["Slow heart rate","Fast heart rate","Enlarged heart","Heart surgery"],a:1,e:"Tachy means fast and cardia means heart, so a fast heart rate."},
+   {q:"The root 'cardi/o' refers to the:",o:["Kidney","Liver","Heart","Lung"],a:2,e:"Cardi/o refers to the heart."},
+   {q:"The suffix '-ectomy' means:",o:["Inflammation","Surgical removal","Disease","Pain"],a:1,e:"-ectomy means surgical removal, as in appendectomy."},
+   {q:"If something is 'distended', it is:",o:["Blocked","Swollen or stretched","Empty","Painful"],a:1,e:"Distended means swollen or expanded."},
+   {q:"In medicine, 'patent' means:",o:["Blocked","Open and unobstructed","Infected","Painful"],a:1,e:"Patent means open and clear, such as a patent airway."},
+   {q:"To 'abstain' means to:",o:["Rush in","Refrain or hold back","Fall asleep","Speak loudly"],a:1,e:"Abstain means to hold back or refrain from something."}
+  ]
+ }
+];
+
+/* -------------------- helpers -------------------- */
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function trim(s){return String(s).replace(/^\s+|\s+$/g,"");}
+function lsGet(k,d){try{var v=localStorage.getItem(k);return v===null?d:v;}catch(e){return d;}}
+function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function jGet(k,d){var v=lsGet(k,null);if(v===null)return d;try{return JSON.parse(v);}catch(e){return d;}}
+function jSet(k,v){lsSet(k,JSON.stringify(v));}
+function subjByKey(k){for(var i=0;i<DATA.length;i++){if(DATA[i].key===k)return DATA[i];}return null;}
+
+function getDone(key){return jGet("cc_done_"+key,[]);}
+function isDone(key,i){var d=getDone(key);for(var j=0;j<d.length;j++){if(d[j]===i)return true;}return false;}
+function markDone(key,i){var d=getDone(key);for(var j=0;j<d.length;j++){if(d[j]===i)return;}d.push(i);jSet("cc_done_"+key,d);}
+function unDone(key,i){var d=getDone(key);var n=[];for(var j=0;j<d.length;j++){if(d[j]!==i)n.push(d[j]);}jSet("cc_done_"+key,n);}
+function getBest(key){var b=parseInt(lsGet("cc_best_"+key,"0"),10);return isNaN(b)?0:b;}
+function setBest(key,v){if(v>getBest(key))lsSet("cc_best_"+key,String(v));}
+
+/* -------------------- name / greeting -------------------- */
+function greetWord(){var h=new Date().getHours();return h<12?"Good morning":(h<17?"Good afternoon":"Good evening");}
+function boot(){
+  var name=lsGet("cc_name","");
+  if(!trim(name)){$("modal").className="modal";}
+  else{startApp(name);}
+}
+function startApp(name){
+  $("modal").className="modal hide";
+  $("greet").innerHTML=greetWord()+", <span>"+esc(name)+"</span>";
+  $("who").innerHTML="Studying today<b>"+esc(name)+"</b>";
+  renderHome();
+}
+$("nameGo").onclick=function(){
+  var v=trim($("nameInput").value);
+  if(!v)v="friend";
+  lsSet("cc_name",v);
+  startApp(v);
+};
+$("nameInput").addEventListener("keydown",function(e){if(e.key==="Enter")$("nameGo").click();});
+
+/* -------------------- home -------------------- */
+function subjectCompletion(s){
+  var lc=s.lessons.length, qc=s.questions.length;
+  var d=getDone(s.key).length;
+  var best=getBest(s.key);
+  var qf=qc?best/qc:0;
+  var lf=lc?d/lc:0;
+  return {c:0.6*lf+0.4*qf, d:d, lc:lc, best:best, qc:qc};
+}
+function renderHome(){
+  var grid=$("grid"); grid.innerHTML="";
+  var doneL=0,totL=0,passed=0,sum=0;
+  for(var i=0;i<DATA.length;i++){
+    var s=DATA[i]; var p=subjectCompletion(s);
+    doneL+=p.d; totL+=p.lc; sum+=p.c;
+    if(p.qc&&p.best/p.qc>=0.75)passed++;
+    var card=document.createElement("button");
+    card.className="scard"; card.setAttribute("data-i",i);
+    card.innerHTML=
+      '<span class="badge">'+esc(s.badge)+'</span>'+
+      '<div class="t">'+esc(s.name)+'</div>'+
+      '<div class="b">'+esc(s.blurb)+'</div>'+
+      '<div class="bar"><i style="width:'+Math.round(p.c*100)+'%"></i></div>'+
+      '<div class="meta"><span>'+p.d+'/'+p.lc+' lessons</span><span>Best quiz '+p.best+'/'+p.qc+'</span></div>';
+    card.onclick=(function(idx){return function(){openSubject(idx);};})(i);
+    grid.appendChild(card);
+  }
+  $("pLessons").textContent=doneL;
+  $("pQuiz").textContent=passed;
+  $("pPct").textContent=Math.round(100*sum/DATA.length)+"%";
+}
+function goHome(){
+  ttsStop();
+  $("subject").className="view"; $("home").className="view on";
+  $("homebtn").className="homebtn"; $("who").style.display="";
+  renderHome(); window.scrollTo(0,0);
+}
+$("homebtn").onclick=goHome;
+
+/* -------------------- subject -------------------- */
+var CUR=null;
+function openSubject(i){
+  ttsStop();
+  CUR=DATA[i];
+  $("home").className="view"; $("subject").className="view on";
+  $("homebtn").className="homebtn show"; $("who").style.display="none";
+  $("crumb").textContent="Sections  ›  "+CUR.name;
+  $("shead").textContent=CUR.name;
+  setTab("learn");
+  renderLearn(); renderPractice(); renderVideos(); renderResources();
+  window.scrollTo(0,0);
+}
+var tabs=document.querySelectorAll(".tab");
+for(var ti=0;ti<tabs.length;ti++){
+  tabs[ti].onclick=(function(el){return function(){setTab(el.getAttribute("data-pane"));};})(tabs[ti]);
+}
+function setTab(name){
+  ttsStop();
+  for(var i=0;i<tabs.length;i++){
+    var on=tabs[i].getAttribute("data-pane")===name;
+    tabs[i].className=on?"tab on":"tab";
+  }
+  var panes=["learn","practice","videos","resources"];
+  for(var j=0;j<panes.length;j++){
+    $("pane-"+panes[j]).className=panes[j]===name?"pane on":"pane";
+  }
+}
+
+/* -------------------- learn: lesson list -------------------- */
+function renderLearn(){
+  var box=$("pane-learn"); box.innerHTML="";
+  var list=document.createElement("div"); list.className="llist";
+  for(var i=0;i<CUR.lessons.length;i++){
+    var done=isDone(CUR.key,i);
+    var row=document.createElement("button");
+    row.className="lrow"+(done?" done":"");
+    row.innerHTML=
+      '<span class="ix">'+(done?"✓":(i+1))+'</span>'+
+      '<span><span class="lt">'+esc(CUR.lessons[i].t)+'</span><br><span class="ls">Lesson '+(i+1)+' of '+CUR.lessons.length+'</span></span>'+
+      (done?'<span class="chk">Read</span>':'');
+    row.onclick=(function(idx){return function(){openLesson(idx);};})(i);
+    list.appendChild(row);
+  }
+  box.appendChild(list);
+}
+
+/* -------------------- reader + read-aloud -------------------- */
+var tts={synth:window.speechSynthesis,voice:null,rate:0.9,sentences:[],words:[],si:0,playing:false,timer:null,curSent:-1,lessonIdx:0};
+
+function buildLessonHtml(lesson){
+  tts.sentences=[]; tts.words=[];
+  var gi=0, gs=0, html="";
+  var readable={h:1,p:1,li:1,note:1};
+  for(var b=0;b<lesson.blocks.length;b++){
+    var blk=lesson.blocks[b];
+    if(!readable[blk.type]){
+      if(blk.type==="sc"){
+        html+='<div class="sc">'+esc(blk.text)+(blk.ref?'<span class="ref">'+esc(blk.ref)+'</span>':'')+'</div>';
+      }
+      continue;
+    }
+    var sents=blk.text.match(/[^.!?]+[.!?]*/g); if(!sents)sents=[blk.text];
+    var inner="";
+    for(var s=0;s<sents.length;s++){
+      var stext=trim(sents[s]); if(stext==="")continue;
+      var toks=stext.split(/\s+/); var ws=gi;
+      for(var w=0;w<toks.length;w++){
+        inner+='<span class="w" data-i="'+gi+'" data-s="'+gs+'">'+esc(toks[w])+'</span> ';
+        tts.words[gi]={s:gs}; gi++;
+      }
+      tts.sentences[gs]={ws:ws,we:gi-1,text:stext}; gs++;
+    }
+    if(blk.type==="h")html+='<h3>'+inner+'</h3>';
+    else if(blk.type==="li")html+='<div class="li">'+inner+'</div>';
+    else if(blk.type==="note")html+='<div class="note">'+inner+'</div>';
+    else html+='<p>'+inner+'</p>';
+  }
+  return html;
+}
+function qi(i){return document.querySelector('#pane-learn .w[data-i="'+i+'"]');}
+function clearHi(){
+  var cur=document.querySelectorAll("#pane-learn .w.cur");
+  for(var i=0;i<cur.length;i++)cur[i].className="w";
+  var sen=document.querySelectorAll("#pane-learn .w.sent");
+  for(var j=0;j<sen.length;j++)sen[j].className="w";
+  tts.curSent=-1;
+}
+function setCurrent(gi){
+  var el=qi(gi); if(!el)return;
+  var sidx=parseInt(el.getAttribute("data-s"),10);
+  if(sidx!==tts.curSent){
+    var old=document.querySelectorAll("#pane-learn .w.sent");
+    for(var i=0;i<old.length;i++)old[i].className="w";
+    var band=document.querySelectorAll('#pane-learn .w[data-s="'+sidx+'"]');
+    for(var j=0;j<band.length;j++)band[j].className="w sent";
+    tts.curSent=sidx;
+  }
+  var prev=document.querySelectorAll("#pane-learn .w.cur");
+  for(var k=0;k<prev.length;k++)prev[k].className="w sent";
+  el.className="w sent cur";
+  try{el.scrollIntoView({block:"nearest"});}catch(e){}
+}
+function stopTimers(){if(tts.timer){clearTimeout(tts.timer);tts.timer=null;}}
+function timerAdvance(sen,idx){
+  setCurrent(idx);
+  if(idx>=sen.we)return;
+  var next=idx+1; var el=qi(next);
+  var len=el?el.textContent.length:5;
+  var ms=Math.max(150,Math.min(780,(len*58+120)/tts.rate));
+  tts.timer=setTimeout(function(){timerAdvance(sen,next);},ms);
+}
+function speakFrom(si){
+  stopTimers();
+  if(si>=tts.sentences.length){ttsFinishRead();return;}
+  tts.si=si; tts.playing=true;
+  var sen=tts.sentences[si];
+  setCurrent(sen.ws);
+  var u=new SpeechSynthesisUtterance(sen.text);
+  if(tts.voice)u.voice=tts.voice;
+  u.rate=tts.rate; u.pitch=1;
+  var wp=sen.ws-1, fired=false;
+  u.onboundary=function(e){
+    if(e&&e.name==="sentence")return;
+    fired=true; stopTimers();
+    wp++; if(wp>sen.we)wp=sen.we;
+    setCurrent(wp);
+  };
+  u.onstart=function(){
+    tts.timer=setTimeout(function(){if(!fired)timerAdvance(sen,sen.ws);},350);
+  };
+  u.onend=function(){stopTimers();if(tts.playing)speakFrom(si+1);};
+  u.onerror=function(){stopTimers();if(tts.playing)speakFrom(si+1);};
+  try{tts.synth.speak(u);}catch(err){}
+}
+function ttsPlayBtn(){return document.getElementById("playBtn");}
+function ttsPlay(){
+  if(tts.playing)return;
+  var start=(tts.si<tts.sentences.length)?tts.si:0;
+  tts.playing=true; setPlayUI(true);
+  speakFrom(start);
+}
+function ttsPause(){
+  tts.playing=false; stopTimers();
+  try{tts.synth.cancel();}catch(e){}
+  setPlayUI(false);
+}
+function ttsStop(){
+  tts.playing=false; stopTimers();
+  try{tts.synth.cancel();}catch(e){}
+  tts.si=0; clearHi(); setPlayUI(false);
+}
+function ttsFinishRead(){
+  tts.playing=false; tts.si=0; stopTimers(); setPlayUI(false);
+}
+function setPlayUI(on){
+  var b=ttsPlayBtn(); if(!b)return;
+  if(on){b.className="rbtn primary playing";b.innerHTML="❚❚ Pause";}
+  else{b.className="rbtn primary";b.innerHTML="▶ Read aloud";}
+}
+
+function openLesson(idx){
+  ttsStop(); tts.lessonIdx=idx;
+  var lesson=CUR.lessons[idx];
+  var done=isDone(CUR.key,idx);
+  var box=$("pane-learn");
+  var voicesOpts=voiceOptionsHtml();
+  box.innerHTML=
+    '<div class="crumb"><a href="#" id="backLessons">‹ All lessons</a></div>'+
+    '<div class="reader">'+
+      '<div class="rbar">'+
+        '<button class="rbtn primary" id="playBtn">▶ Read aloud</button>'+
+        '<button class="rbtn sm" id="restartBtn" title="Start over">↺</button>'+
+        '<button class="rbtn sm" id="fontDown" title="Smaller text">A–</button>'+
+        '<button class="rbtn sm" id="fontUp" title="Bigger text">A+</button>'+
+        '<span class="rgrp"><span class="lbl">Speed</span>'+
+          '<button class="speed" data-r="0.7">Slower</button>'+
+          '<button class="speed" data-r="0.9">Normal</button>'+
+          '<button class="speed" data-r="1.15">Faster</button>'+
+        '</span>'+
+      '</div>'+
+      (voicesOpts?'<div class="rbar" style="top:auto"><span class="lbl" style="align-self:center">Voice</span><select class="speed" id="voiceSel" style="flex:1">'+voicesOpts+'</select></div>':'')+
+      '<div class="rbody" id="rbody" style="font-size:'+getFont()+'px"><h2 style="font-family:\'Saira Condensed\',sans-serif;color:var(--navy);margin:0 0 14px;font-size:26px">'+esc(lesson.t)+'</h2>'+buildLessonHtml(lesson)+'</div>'+
+      '<div class="rfoot">'+
+        '<button class="donebtn'+(done?" isdone":"")+'" id="doneBtn">'+(done?"✓ Marked as read":"Mark as read")+'</button>'+
+        '<div class="navwrap">'+
+          '<button class="navbtn" id="prevBtn"'+(idx===0?" disabled":"")+'>‹ Prev</button>'+
+          '<button class="navbtn" id="nextBtn"'+(idx===CUR.lessons.length-1?" disabled":"")+'>Next ›</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+
+  $("backLessons").onclick=function(e){e.preventDefault();ttsStop();renderLearn();};
+  ttsPlayBtn().onclick=function(){if(tts.playing)ttsPause();else ttsPlay();};
+  $("restartBtn").onclick=function(){ttsStop();ttsPlay();};
+  $("fontDown").onclick=function(){setFont(getFont()-1);$("rbody").style.fontSize=getFont()+"px";};
+  $("fontUp").onclick=function(){setFont(getFont()+1);$("rbody").style.fontSize=getFont()+"px";};
+
+  var sp=document.querySelectorAll("#pane-learn .speed[data-r]");
+  function markSpeed(){for(var i=0;i<sp.length;i++){sp[i].className="speed"+(parseFloat(sp[i].getAttribute("data-r"))===tts.rate?" on":"");}}
+  for(var i2=0;i2<sp.length;i2++){
+    sp[i2].onclick=(function(el){return function(){
+      tts.rate=parseFloat(el.getAttribute("data-r")); lsSet("cc_rate",String(tts.rate)); markSpeed();
+      if(tts.playing){stopTimers();try{tts.synth.cancel();}catch(e){}speakFrom(tts.si);}
+    };})(sp[i2]);
+  }
+  markSpeed();
+
+  var vs=$("voiceSel");
+  if(vs){vs.onchange=function(){pickVoiceByName(vs.value);lsSet("cc_voice",vs.value);};}
+
+  $("doneBtn").onclick=function(){
+    if(isDone(CUR.key,idx)){unDone(CUR.key,idx);this.className="donebtn";this.innerHTML="Mark as read";}
+    else{markDone(CUR.key,idx);this.className="donebtn isdone";this.innerHTML="✓ Marked as read";confetti();}
+  };
+  $("prevBtn").onclick=function(){if(idx>0)openLesson(idx-1);};
+  $("nextBtn").onclick=function(){if(idx<CUR.lessons.length-1)openLesson(idx+1);};
+
+  var wsp=document.querySelectorAll("#pane-learn .w");
+  for(var wi=0;wi<wsp.length;wi++){
+    wsp[wi].onclick=(function(el){return function(){
+      var s=parseInt(el.getAttribute("data-s"),10);
+      tts.playing=true; setPlayUI(true); speakFrom(s);
+    };})(wsp[wi]);
+  }
+  window.scrollTo(0,0);
+}
+
+/* fonts */
+function getFont(){var f=parseInt(lsGet("cc_font","19"),10);if(isNaN(f))f=19;return Math.max(15,Math.min(26,f));}
+function setFont(v){lsSet("cc_font",String(Math.max(15,Math.min(26,v))));}
+
+/* voices */
+function allVoices(){try{return tts.synth.getVoices()||[];}catch(e){return [];}}
+function enVoices(){var v=allVoices(),o=[];for(var i=0;i<v.length;i++){if(/^en/i.test(v[i].lang))o.push(v[i]);}return o.length?o:v;}
+function voiceOptionsHtml(){
+  var v=enVoices(); if(!v.length)return "";
+  var cur=lsGet("cc_voice",""); var h="";
+  for(var i=0;i<v.length;i++){
+    var sel=(v[i].name===cur)?" selected":"";
+    h+='<option value="'+esc(v[i].name)+'"'+sel+'>'+esc(v[i].name)+'</option>';
+  }
+  return h;
+}
+function pickVoiceByName(name){var v=allVoices();for(var i=0;i<v.length;i++){if(v[i].name===name){tts.voice=v[i];return;}}}
+function initVoice(){
+  var v=enVoices(); if(!v.length)return;
+  var saved=lsGet("cc_voice","");
+  if(saved){pickVoiceByName(saved);if(tts.voice)return;}
+  for(var i=0;i<v.length;i++){ if(/enhanced|premium|natural|siri|google/i.test(v[i].name)){tts.voice=v[i];return;} }
+  tts.voice=v[0];
+}
+if(tts.synth){
+  tts.rate=parseFloat(lsGet("cc_rate","0.9"))||0.9;
+  initVoice();
+  if(typeof tts.synth.onvoiceschanged!=="undefined"){
+    tts.synth.onvoiceschanged=function(){
+      initVoice();
+      var vs=document.getElementById("voiceSel");
+      if(vs){vs.innerHTML=voiceOptionsHtml();}
+    };
+  }
+}
+
+/* -------------------- practice / quiz -------------------- */
+var quiz={qi:0,score:0,answered:false};
+function renderPractice(){startQuiz();}
+function startQuiz(){
+  quiz.qi=0; quiz.score=0; quiz.answered=false;
+  drawQuestion();
+}
+function drawQuestion(){
+  var box=$("pane-practice");
+  var qs=CUR.questions, n=qs.length, i=quiz.qi;
+  if(i>=n){drawResult();return;}
+  var q=qs[i];
+  var opts="";
+  for(var o=0;o<q.o.length;o++){
+    opts+='<button class="opt" data-o="'+o+'">'+esc(q.o[o])+'</button>';
+  }
+  box.innerHTML=
+    '<div class="quiz">'+
+      '<div class="qtop"><span class="qcount">Question '+(i+1)+' of '+n+'</span><span class="qcount">Score '+quiz.score+'</span></div>'+
+      '<div class="qbar"><i style="width:'+Math.round(i/n*100)+'%"></i></div>'+
+      '<div class="qq">'+esc(q.q)+'</div>'+
+      '<div id="opts">'+opts+'</div>'+
+      '<div class="expl" id="expl"><b>Why:</b> '+esc(q.e)+'</div>'+
+      '<div class="qnav" id="qnav"></div>'+
+    '</div>';
+  quiz.answered=false;
+  var ob=document.querySelectorAll("#opts .opt");
+  for(var b=0;b<ob.length;b++){
+    ob[b].onclick=(function(el){return function(){answer(parseInt(el.getAttribute("data-o"),10));};})(ob[b]);
+  }
+}
+function answer(choice){
+  if(quiz.answered)return; quiz.answered=true;
+  var q=CUR.questions[quiz.qi];
+  var ob=document.querySelectorAll("#opts .opt");
+  for(var b=0;b<ob.length;b++){
+    ob[b].setAttribute("disabled","disabled");
+    var oi=parseInt(ob[b].getAttribute("data-o"),10);
+    if(oi===q.a){ob[b].className="opt correct";ob[b].innerHTML=ob[b].innerHTML+'<span class="mk">✓</span>';}
+    else if(oi===choice){ob[b].className="opt wrong";ob[b].innerHTML=ob[b].innerHTML+'<span class="mk">✗</span>';}
+  }
+  if(choice===q.a)quiz.score++;
+  $("expl").className="expl show";
+  var last=(quiz.qi===CUR.questions.length-1);
+  $("qnav").innerHTML='<button class="donebtn" id="nextQ">'+(last?"See results":"Next question ›")+'</button>';
+  $("nextQ").onclick=function(){quiz.qi++;drawQuestion();};
+}
+function drawResult(){
+  var n=CUR.questions.length, sc=quiz.score, pct=Math.round(sc/n*100);
+  setBest(CUR.key,sc);
+  var pass=pct>=75;
+  var msg=pass?"Well done — that's a passing score on this section. Keep it up!":"Good effort. Review the lessons above and try again — you'll get there.";
+  var box=$("pane-practice");
+  box.innerHTML=
+    '<div class="quiz"><div class="qresult">'+
+      '<div class="big">'+pct+'%</div>'+
+      '<div class="rlabel">'+sc+' of '+n+' correct'+(pass?"  ·  passing":"")+'</div>'+
+      '<div class="msg">'+esc(msg)+'</div>'+
+      '<button class="donebtn" id="retry">Try again</button> '+
+      '<button class="navbtn" id="toLessons" style="margin-left:8px">Back to lessons</button>'+
+    '</div></div>';
+  $("retry").onclick=function(){startQuiz();};
+  $("toLessons").onclick=function(){setTab("learn");};
+  if(pass)confetti();
+  renderHomeQuiet();
+}
+function renderHomeQuiet(){/* refresh stored progress without leaving view */}
+
+/* -------------------- videos -------------------- */
+function ytEmbed(id){return "https://www.youtube.com/embed/"+id+"?rel=0";}
+function ytWatch(id){return "https://www.youtube.com/watch?v="+id;}
+function parseYT(u){
+  if(!u)return null; u=trim(u); var m;
+  m=u.match(/[?&]v=([A-Za-z0-9_-]{11})/); if(m)return m[1];
+  m=u.match(/youtu\.be\/([A-Za-z0-9_-]{11})/); if(m)return m[1];
+  m=u.match(/\/embed\/([A-Za-z0-9_-]{11})/); if(m)return m[1];
+  m=u.match(/\/shorts\/([A-Za-z0-9_-]{11})/); if(m)return m[1];
+  m=u.match(/\/live\/([A-Za-z0-9_-]{11})/); if(m)return m[1];
+  if(/^[A-Za-z0-9_-]{11}$/.test(u))return u;
+  return null;
+}
+function userVids(){return jGet("cc_vids_"+CUR.key,[]);}
+function renderVideos(){
+  var box=$("pane-videos");
+  var searchUrl="https://www.youtube.com/results?search_query="+encodeURIComponent(CUR.search);
+  var html=
+    '<div class="vadd">'+
+      '<div class="lab">Add a video</div>'+
+      '<input id="vUrl" type="text" placeholder="Paste a YouTube link here" inputmode="url">'+
+      '<input id="vTitle" type="text" placeholder="Label (optional) — e.g. Heart chambers">'+
+      '<div class="row"><button class="go" id="vGo">Add video</button>'+
+      '<a class="yt" href="'+searchUrl+'" target="_blank" rel="noopener">Search YouTube ↗</a></div>'+
+      '<div class="vhint" id="vHint">Paste any YouTube link (watch, share, or Shorts). It saves here and plays right in the app.</div>'+
+    '</div>';
+  html+='<div id="vList"></div>';
+  box.innerHTML=html;
+  $("vGo").onclick=function(){
+    var id=parseYT($("vUrl").value);
+    if(!id){$("vHint").innerHTML="Hmm, that doesn't look like a YouTube link. Copy the link from the video's Share button and paste it again.";return;}
+    var t=trim($("vTitle").value)||"My video";
+    var arr=userVids(); arr.push({id:id,t:t}); jSet("cc_vids_"+CUR.key,arr);
+    $("vUrl").value=""; $("vTitle").value=""; $("vHint").innerHTML="Added. It's saved for next time too.";
+    drawVideoList();
+  };
+  drawVideoList();
+}
+function drawVideoList(){
+  var list=$("vList"); if(!list)return; list.innerHTML="";
+  var starters=CUR.videos||[];
+  for(var i=0;i<starters.length;i++)list.appendChild(vCard(starters[i],false,-1));
+  var mine=userVids();
+  for(var j=0;j<mine.length;j++)list.appendChild(vCard(mine[j],true,j));
+  if(!starters.length&&!mine.length){
+    var d=document.createElement("div"); d.className="vhint"; d.style.padding="4px 2px";
+    d.innerHTML="No videos yet. Tap <b>Search YouTube</b> above to find one, then paste its link to add it here.";
+    list.appendChild(d);
+  }
+}
+function vCard(v,isUser,idx){
+  var wrap=document.createElement("div"); wrap.className="vitem";
+  wrap.innerHTML=
+    '<div class="vframe"><iframe src="'+ytEmbed(v.id)+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>'+
+    '<div class="vmeta">'+(isUser?'':'<span class="tag">Starter</span>')+
+      '<span class="vt">'+esc(v.t)+'</span>'+
+      '<a href="'+ytWatch(v.id)+'" target="_blank" rel="noopener">Open ↗</a>'+
+      (isUser?'<button class="rm" data-x="'+idx+'">Remove</button>':'')+
+    '</div>';
+  if(isUser){
+    var btn=wrap.querySelector(".rm");
+    btn.onclick=function(){
+      var arr=userVids(); var n=[];
+      for(var k=0;k<arr.length;k++){if(k!==idx)n.push(arr[k]);}
+      jSet("cc_vids_"+CUR.key,n); drawVideoList();
+    };
+  }
+  return wrap;
+}
+
+/* -------------------- resources -------------------- */
+function renderResources(){
+  var box=$("pane-resources"); var list=document.createElement("div"); list.className="rlist";
+  var r=CUR.resources||[];
+  for(var i=0;i<r.length;i++){
+    var a=document.createElement("a"); a.className="ritem"; a.href=r[i].u; a.target="_blank"; a.rel="noopener";
+    a.innerHTML='<div class="rt">'+esc(r[i].t)+'</div><div class="rd">'+esc(r[i].d)+'</div><div class="ru">'+esc(r[i].u)+'</div>';
+    list.appendChild(a);
+  }
+  box.innerHTML=""; box.appendChild(list);
+}
+
+/* -------------------- confetti -------------------- */
+function confetti(){
+  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  var c=document.createElement("canvas"); c.className="confetti"; document.body.appendChild(c);
+  var ctx=c.getContext("2d"); var W=c.width=window.innerWidth, H=c.height=window.innerHeight;
+  var cols=["#c69a3e","#2e7d70","#122a4a","#e7cf92","#3a6ea5"];
+  var P=[]; for(var i=0;i<130;i++){P.push({x:Math.random()*W,y:-20-Math.random()*H*0.4,r:4+Math.random()*5,c:cols[i%cols.length],vy:2+Math.random()*3.2,vx:-1.6+Math.random()*3.2,a:Math.random()*6});}
+  var t=0; var iv=setInterval(function(){
+    ctx.clearRect(0,0,W,H); t++;
+    for(var i=0;i<P.length;i++){var p=P[i];p.y+=p.vy;p.x+=p.vx;p.a+=0.12;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.a);ctx.fillStyle=p.c;ctx.fillRect(-p.r,-p.r,p.r*2,p.r*1.2);ctx.restore();}
+    if(t>95){clearInterval(iv);if(c.parentNode)c.parentNode.removeChild(c);}
+  },16);
+}
+
+/* -------------------- go -------------------- */
+boot();
+</script>
+</body>
+</html>
