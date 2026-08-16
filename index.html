@@ -174,6 +174,15 @@ main{max-width:820px;margin:0 auto;padding:18px 16px 40px}
 .qresult .big{font-family:'Saira Condensed',sans-serif;font-weight:700;font-size:48px;color:var(--navy)}
 .qresult .rlabel{color:var(--muted);margin-bottom:6px}
 .qresult .msg{font-size:16px;margin:6px auto 16px;max-width:40ch;color:var(--ink)}
+.pchooser{display:flex;flex-direction:column;gap:10px}
+.chooseintro{font-size:14.5px;color:var(--muted);line-height:1.55;margin:0 2px 4px}
+.qpick{display:flex;flex-direction:column;align-items:flex-start;gap:3px;width:100%;text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:14px 16px;cursor:pointer;transition:border-color .15s,background .15s}
+.qpick:hover{border-color:var(--verd);background:#f7faf7}
+.qpick .qpt{font-size:16px;font-weight:600;color:var(--navy);line-height:1.3}
+.qpick .qpm{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px}
+.qpick.mixed{border-color:var(--gold);background:#fdf9ee;margin-top:2px}
+.qpick.mixed:hover{background:#fbf4dd}
+.qpick.mixed .qpt{color:var(--verd-deep)}
 
 /* videos */
 .vadd{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
@@ -654,6 +663,550 @@ var DATA = [
  }
 ];
 
+/* -------------------- question banks (per sub-topic) -------------------- */
+var BANKS={
+"anatomy":[
+[
+ {q:"Which lists the body's levels from smallest to largest?",o:["Organs, cells, tissues, systems","Cells, tissues, organs, organ systems","Tissues, cells, systems, organs","Systems, organs, tissues, cells"],a:1,e:"The order builds up: cells form tissues, tissues form organs, organs form organ systems."},
+ {q:"The term 'superior' means toward the:",o:["Feet","Head","Back","Midline"],a:1,e:"Superior means toward the head; inferior means toward the feet."},
+ {q:"'Inferior' refers to a position toward the:",o:["Head","Front","Feet","Side"],a:2,e:"Inferior means lower, toward the feet."},
+ {q:"'Anterior' describes the ___ of the body.",o:["Front","Back","Top","Bottom"],a:0,e:"Anterior (ventral) means the front surface."},
+ {q:"'Posterior' describes the ___ of the body.",o:["Front","Back","Left","Right"],a:1,e:"Posterior (dorsal) means the back surface."},
+ {q:"'Medial' means:",o:["Away from the midline","Toward the midline","Toward the head","Near the surface"],a:1,e:"Medial means toward the body's midline."},
+ {q:"'Lateral' means:",o:["Toward the midline","Away from the midline","Toward the feet","Deep inside"],a:1,e:"Lateral means away from the midline, toward the sides."},
+ {q:"Compared with the wrist, the elbow is:",o:["Distal","Proximal","Lateral","Inferior"],a:1,e:"Proximal means closer to the trunk; the elbow is closer than the wrist."},
+ {q:"'Distal' means:",o:["Closer to the trunk","Farther from the trunk","Toward the front","Toward the head"],a:1,e:"Distal means farther from the point of attachment, like the fingers versus the elbow."},
+ {q:"Which plane divides the body into left and right?",o:["Transverse","Frontal","Sagittal","Oblique"],a:2,e:"A sagittal plane splits the body into left and right portions."},
+ {q:"The frontal (coronal) plane divides the body into:",o:["Left and right","Front and back","Top and bottom","Inner and outer"],a:1,e:"The frontal plane separates anterior (front) from posterior (back)."},
+ {q:"Which plane divides the body into top and bottom?",o:["Sagittal","Frontal","Transverse","Median"],a:2,e:"The transverse plane creates superior and inferior (top and bottom) sections."},
+ {q:"The dorsal body cavity contains the:",o:["Heart and lungs","Brain and spinal cord","Stomach and liver","Kidneys and bladder"],a:1,e:"The dorsal cavity houses the brain and spinal cord."},
+ {q:"The thoracic cavity contains the:",o:["Brain","Heart and lungs","Intestines","Kidneys"],a:1,e:"The thoracic (chest) cavity holds the heart and lungs."},
+ {q:"In anatomical position, the palms face:",o:["Backward","Each other","Forward","Downward"],a:2,e:"Anatomical position is standing, facing forward, with palms turned forward."},
+ {q:"'Superficial' means:",o:["Deep within the body","Near the surface","Toward the head","Toward the midline"],a:1,e:"Superficial means close to the surface; deep means farther inside."},
+ {q:"Several organs working together to perform a function form a(n):",o:["Tissue","Cell","Organ system","Membrane"],a:2,e:"An organ system is a group of organs cooperating for a shared function."},
+ {q:"The smallest living unit of the body is the:",o:["Tissue","Cell","Atom","Organ"],a:1,e:"The cell is the smallest unit that is alive."},
+ {q:"Compared with the ankle, the knee is:",o:["Distal","Proximal","Medial","Superficial"],a:1,e:"The knee is closer to the trunk than the ankle, so it is proximal."},
+ {q:"A group of similar cells working together forms a:",o:["Organ","Tissue","System","Cavity"],a:1,e:"Similar cells acting together make up a tissue."}
+],
+[
+ {q:"About how many bones are in the adult human skeleton?",o:["106","206","306","406"],a:1,e:"The adult skeleton has roughly 206 bones."},
+ {q:"The axial skeleton includes the:",o:["Arms and legs","Skull, spine and rib cage","Hands and feet","Shoulder and hip"],a:1,e:"The axial skeleton is the central line: skull, vertebral column and rib cage."},
+ {q:"The appendicular skeleton includes the:",o:["Skull","Spine","Limbs (arms and legs)","Rib cage"],a:2,e:"The appendicular skeleton is the limbs and the girdles that attach them."},
+ {q:"Which is NOT a function of the skeletal system?",o:["Support","Protection","Digesting food","Making blood cells"],a:2,e:"The skeleton supports, protects, moves, stores minerals and makes blood cells, but does not digest food."},
+ {q:"Blood cells are produced in the:",o:["Liver","Bone marrow","Kidneys","Muscles"],a:1,e:"Red bone marrow produces blood cells."},
+ {q:"Which mineral is stored in bones?",o:["Iron","Calcium","Sodium","Potassium"],a:1,e:"Bones store calcium (and phosphorus)."},
+ {q:"Skeletal muscle is:",o:["Involuntary","Voluntary","Found only in the heart","Unable to move bones"],a:1,e:"Skeletal muscle is under conscious (voluntary) control and moves bones."},
+ {q:"Cardiac muscle is found:",o:["In the arms","Only in the heart","Lining the stomach","In the skin"],a:1,e:"Cardiac muscle exists only in the heart."},
+ {q:"Smooth muscle is:",o:["Voluntary and striated","Involuntary and lines hollow organs","Found only in the heart","Attached to bones"],a:1,e:"Smooth muscle is involuntary and lines hollow organs like the stomach and blood vessels."},
+ {q:"Which muscle type is striated and under voluntary control?",o:["Smooth","Cardiac","Skeletal","Visceral"],a:2,e:"Skeletal muscle is striated and voluntary."},
+ {q:"Which muscle type is involuntary and lines the digestive tract?",o:["Skeletal","Smooth","Cardiac","Striated"],a:1,e:"Smooth muscle lines the digestive tract and works involuntarily."},
+ {q:"Besides movement, muscles also produce:",o:["Bile","Body heat","Urine","Hormones only"],a:1,e:"Working muscles generate most of the body's heat."},
+ {q:"Which muscle can you consciously control?",o:["Cardiac","Smooth","Skeletal","Involuntary"],a:2,e:"Skeletal muscle is the voluntary muscle you control at will."},
+ {q:"The bones that protect the brain form the:",o:["Rib cage","Skull","Spine","Pelvis"],a:1,e:"The skull (cranium) protects the brain."},
+ {q:"The spine (vertebral column) belongs to which division?",o:["Appendicular skeleton","Axial skeleton","Muscular system","Nervous system"],a:1,e:"The spine is part of the axial skeleton."},
+ {q:"Which statement about cardiac muscle is TRUE?",o:["It is voluntary","It is found in the arms","It is involuntary and only in the heart","It attaches to bone"],a:2,e:"Cardiac muscle is involuntary and located only in the heart."},
+ {q:"The rib cage mainly protects the:",o:["Brain","Heart and lungs","Kidneys","Bladder"],a:1,e:"The rib cage shields the heart and lungs."},
+ {q:"A joint is a place where:",o:["Two bones meet","A muscle ends","Blood is made","Nerves cross"],a:0,e:"A joint is where two or more bones come together."},
+ {q:"'Voluntary' movement means it is:",o:["Automatic","Under conscious control","Only in the heart","Impossible to stop"],a:1,e:"Voluntary means you consciously control it."},
+ {q:"The main job of red bone marrow is to:",o:["Store fat","Make blood cells","Produce bile","Filter urine"],a:1,e:"Red marrow produces the body's blood cells."}
+],
+[
+ {q:"How many chambers does the heart have?",o:["Two","Three","Four","Five"],a:2,e:"The heart has four chambers: two atria and two ventricles."},
+ {q:"The two upper chambers of the heart are the:",o:["Ventricles","Atria","Valves","Arteries"],a:1,e:"The upper chambers are the right and left atria."},
+ {q:"The two lower chambers of the heart are the:",o:["Atria","Ventricles","Aortas","Veins"],a:1,e:"The lower chambers are the right and left ventricles."},
+ {q:"Which chamber is the strongest, pumping blood to the whole body?",o:["Right atrium","Left atrium","Right ventricle","Left ventricle"],a:3,e:"The left ventricle is the strongest chamber."},
+ {q:"Blood returning from the body first enters the:",o:["Left ventricle","Right atrium","Left atrium","Right ventricle"],a:1,e:"Oxygen-poor blood from the body enters the right atrium."},
+ {q:"The right ventricle pumps blood to the:",o:["Body","Lungs","Brain","Kidneys"],a:1,e:"The right ventricle sends blood to the lungs to pick up oxygen."},
+ {q:"Oxygen-rich blood from the lungs returns to the:",o:["Right atrium","Left atrium","Right ventricle","Aorta"],a:1,e:"Oxygenated blood from the lungs returns to the left atrium."},
+ {q:"The left ventricle pumps blood to the:",o:["Lungs","Whole body","Right atrium","Liver only"],a:1,e:"The left ventricle pushes oxygen-rich blood out to the entire body."},
+ {q:"Arteries carry blood:",o:["Toward the heart","Away from the heart","Only in the lungs","Nowhere"],a:1,e:"Arteries carry blood away from the heart."},
+ {q:"Veins carry blood:",o:["Away from the heart","Toward the heart","Only to the brain","In circles"],a:1,e:"Veins return blood toward the heart."},
+ {q:"The tiny vessels where oxygen and nutrients are exchanged are:",o:["Arteries","Veins","Capillaries","Valves"],a:2,e:"Capillaries are the exchange vessels between blood and tissues."},
+ {q:"Gas exchange in the lungs occurs in the:",o:["Trachea","Bronchi","Alveoli","Diaphragm"],a:2,e:"Alveoli are the tiny air sacs where gases are exchanged."},
+ {q:"Which is the correct path of air into the lungs?",o:["Trachea, bronchi, bronchioles, alveoli","Alveoli, bronchi, trachea","Bronchi, trachea, alveoli","Bronchioles, trachea, bronchi"],a:0,e:"Air moves trachea to bronchi to bronchioles to alveoli."},
+ {q:"The main muscle that drives breathing is the:",o:["Heart","Diaphragm","Bicep","Stomach"],a:1,e:"The diaphragm contracts and relaxes to move air in and out."},
+ {q:"In the lungs, oxygen enters the blood and ___ leaves it.",o:["Nitrogen","Carbon dioxide","Water only","Calcium"],a:1,e:"Carbon dioxide is released from the blood into the lungs to be exhaled."},
+ {q:"The pulmonary circuit carries blood between the heart and the:",o:["Brain","Lungs","Legs","Liver"],a:1,e:"The pulmonary circuit runs between the heart and lungs."},
+ {q:"Which vessels have thick, muscular walls to handle high pressure?",o:["Veins","Capillaries","Arteries","Alveoli"],a:2,e:"Arteries have thick walls to withstand the pressure of blood leaving the heart."},
+ {q:"The windpipe is also called the:",o:["Esophagus","Trachea","Bronchus","Larynx"],a:1,e:"The trachea is the windpipe."},
+ {q:"Which side of the heart handles oxygen-poor blood?",o:["Left side","Right side","Top only","Neither"],a:1,e:"The right side receives and pumps oxygen-poor blood to the lungs."},
+ {q:"Heart valves function to:",o:["Make blood","Prevent backflow of blood","Store oxygen","Filter waste"],a:1,e:"Valves keep blood moving one way and prevent it from flowing backward."}
+],
+[
+ {q:"The central nervous system consists of the:",o:["Heart and lungs","Brain and spinal cord","Arms and legs","Nerves in the skin"],a:1,e:"The CNS is the brain and spinal cord."},
+ {q:"The peripheral nervous system is made of the:",o:["Brain only","Spinal cord only","Nerves outside the brain and spinal cord","Blood vessels"],a:2,e:"The PNS is all the nerves branching out from the CNS."},
+ {q:"The basic cell that carries nerve signals is the:",o:["Neuron","Nephron","Alveolus","Villus"],a:0,e:"A neuron is the signal-carrying nerve cell."},
+ {q:"Which is the correct path of food through digestion?",o:["Mouth, stomach, esophagus, intestine","Mouth, esophagus, stomach, small intestine","Stomach, mouth, intestine","Esophagus, mouth, stomach"],a:1,e:"Food goes mouth to esophagus to stomach to small intestine to large intestine."},
+ {q:"Most nutrient absorption happens in the:",o:["Stomach","Small intestine","Large intestine","Esophagus"],a:1,e:"The small intestine absorbs most nutrients."},
+ {q:"The large intestine mainly absorbs:",o:["Protein","Water","Fat","Oxygen"],a:1,e:"The large intestine absorbs water from remaining material."},
+ {q:"Which are accessory organs of digestion?",o:["Liver, gallbladder, pancreas","Heart, lungs, kidneys","Brain, spine, nerves","Skin, hair, nails"],a:0,e:"The liver, gallbladder and pancreas assist digestion with juices and enzymes."},
+ {q:"Which organ filters waste from the blood to form urine?",o:["Liver","Kidney","Spleen","Pancreas"],a:1,e:"The kidneys filter blood and produce urine."},
+ {q:"Urine travels from the kidneys to the bladder through the:",o:["Urethra","Ureters","Veins","Bronchi"],a:1,e:"Ureters carry urine from the kidneys to the bladder."},
+ {q:"Urine leaves the body through the:",o:["Ureter","Urethra","Esophagus","Trachea"],a:1,e:"The urethra carries urine out of the body."},
+ {q:"Keeping the body's water and salt in balance is called:",o:["Digestion","Homeostasis","Respiration","Circulation"],a:1,e:"Homeostasis is maintaining a stable internal balance."},
+ {q:"The tube that carries food from the mouth to the stomach is the:",o:["Trachea","Esophagus","Ureter","Bronchus"],a:1,e:"The esophagus connects the mouth (throat) to the stomach."},
+ {q:"Which structure carries signals between the brain and the body?",o:["Spinal cord","Liver","Bladder","Aorta"],a:0,e:"The spinal cord relays signals between the brain and the rest of the body."},
+ {q:"Which organ produces bile to help digest fats?",o:["Kidney","Liver","Lung","Bladder"],a:1,e:"The liver makes bile, which helps break down fats."},
+ {q:"The bladder's main job is to:",o:["Filter blood","Store urine","Digest food","Pump blood"],a:1,e:"The bladder stores urine until it is released."},
+ {q:"Which organ is NOT part of the urinary system?",o:["Kidney","Bladder","Pancreas","Ureter"],a:2,e:"The pancreas is a digestive/endocrine organ, not part of the urinary system."},
+ {q:"Nerves that branch to the arms and legs are part of the:",o:["Central nervous system","Peripheral nervous system","Digestive system","Skeletal system"],a:1,e:"Nerves reaching the limbs are part of the peripheral nervous system."},
+ {q:"The largest part of the brain is the:",o:["Cerebellum","Brainstem","Cerebrum","Spinal cord"],a:2,e:"The cerebrum is the largest brain region."},
+ {q:"The pancreas releases digestive enzymes into the:",o:["Stomach","Small intestine","Large intestine","Bladder"],a:1,e:"Pancreatic enzymes flow into the small intestine."},
+ {q:"Waste filtered from the blood by the kidneys becomes:",o:["Bile","Urine","Saliva","Sweat only"],a:1,e:"The kidneys turn filtered waste into urine."}
+]
+],
+"biology":[
+[
+ {q:"Cell theory states that all living things are made of:",o:["Water","Cells","Minerals","Air"],a:1,e:"A core part of cell theory: all living things are composed of one or more cells."},
+ {q:"According to cell theory, the basic unit of life is the:",o:["Atom","Molecule","Cell","Organ"],a:2,e:"The cell is the basic unit of life."},
+ {q:"Cell theory says that new cells come from:",o:["Non-living matter","Existing cells","Water and air","Sunlight"],a:1,e:"All cells arise from pre-existing cells."},
+ {q:"A prokaryotic cell is defined by having:",o:["A nucleus","No nucleus","Two nuclei","No DNA"],a:1,e:"Prokaryotic cells have no true nucleus."},
+ {q:"A eukaryotic cell is defined by having:",o:["No nucleus","A true nucleus","No membrane","Only DNA"],a:1,e:"Eukaryotic cells have a membrane-bound nucleus."},
+ {q:"Which of these is a prokaryotic cell?",o:["Bacteria","Human cell","Plant cell","Animal cell"],a:0,e:"Bacteria are prokaryotes, lacking a nucleus."},
+ {q:"Which is a eukaryotic cell?",o:["Bacterium","Human muscle cell","Virus","None"],a:1,e:"Human (animal) cells are eukaryotic."},
+ {q:"Cells are generally very small because small size:",o:["Looks better","Speeds exchange of materials across the surface","Stores more DNA","Prevents division"],a:1,e:"A high surface-area-to-volume ratio lets small cells move materials in and out efficiently."},
+ {q:"The structure that defines a eukaryotic cell is the:",o:["Cell wall","Nucleus","Ribosome","Flagellum"],a:1,e:"The presence of a nucleus marks a eukaryotic cell."},
+ {q:"Bacteria are missing which structure found in your cells?",o:["Cell membrane","Nucleus","Cytoplasm","DNA"],a:1,e:"Bacteria (prokaryotes) lack a nucleus but still have DNA, membrane and cytoplasm."},
+ {q:"Living things are composed of:",o:["Exactly one cell","One or more cells","No cells","Only tissues"],a:1,e:"Organisms are made of one or more cells."},
+ {q:"An organism made of only one cell is called:",o:["Multicellular","Unicellular","Acellular","Bicellular"],a:1,e:"A single-celled organism is unicellular."},
+ {q:"Plant and animal cells are both:",o:["Prokaryotic","Eukaryotic","Bacterial","Nucleus-free"],a:1,e:"Both plant and animal cells are eukaryotic."},
+ {q:"Which statement is NOT part of cell theory?",o:["All living things are made of cells","Cells are the basic unit of life","Cells never divide","New cells come from existing cells"],a:2,e:"Cells do divide; that claim is false and not part of cell theory."},
+ {q:"The smallest unit that can carry out the processes of life is the:",o:["Molecule","Cell","Organ","Tissue"],a:1,e:"The cell is the smallest living, functional unit."},
+ {q:"A prokaryote's genetic material is:",o:["Absent","Present but not inside a nucleus","Inside a nucleus","Made of protein"],a:1,e:"Prokaryotes have DNA, but it floats in the cytoplasm rather than in a nucleus."},
+ {q:"Which term describes bacteria?",o:["Eukaryotic","Prokaryotic","Multicellular animal","Plant"],a:1,e:"Bacteria are prokaryotic organisms."},
+ {q:"Cells that make up the human body are:",o:["Prokaryotic","Eukaryotic","Non-living","Viral"],a:1,e:"Human body cells are eukaryotic."},
+ {q:"The idea that the cell is the basic unit of structure and function is part of:",o:["Gravity theory","Cell theory","Germ theory","Atomic theory"],a:1,e:"This is a central statement of cell theory."},
+ {q:"A group of similar cells working together is called a:",o:["Tissue","Organ system","Molecule","Nucleus"],a:0,e:"Similar cells working together form a tissue."}
+],
+[
+ {q:"Which organelle is the 'powerhouse of the cell'?",o:["Nucleus","Mitochondrion","Ribosome","Golgi apparatus"],a:1,e:"Mitochondria produce energy (ATP)."},
+ {q:"The organelle that holds DNA and directs the cell is the:",o:["Cell membrane","Nucleus","Cytoplasm","Lysosome"],a:1,e:"The nucleus contains DNA and controls the cell."},
+ {q:"Which organelle builds proteins?",o:["Ribosome","Mitochondrion","Golgi apparatus","Vacuole"],a:0,e:"Ribosomes assemble proteins."},
+ {q:"Which organelle packages materials for the cell?",o:["Ribosome","Golgi apparatus","Nucleus","Chloroplast"],a:1,e:"The Golgi apparatus packages and ships materials."},
+ {q:"The selective barrier controlling what enters and leaves the cell is the:",o:["Cell wall","Cell membrane","Nucleus","Ribosome"],a:1,e:"The cell membrane is a selectively permeable barrier."},
+ {q:"Which organelle captures sunlight to make food in plants?",o:["Mitochondrion","Chloroplast","Nucleus","Lysosome"],a:1,e:"Chloroplasts carry out photosynthesis in plant cells."},
+ {q:"The stiff outer layer found in plant cells but not animal cells is the:",o:["Cell membrane","Cell wall","Nucleus","Cytoplasm"],a:1,e:"Plant cells have a rigid cell wall for support."},
+ {q:"The jelly-like fluid that fills the cell is the:",o:["Cytoplasm","Nucleus","Membrane","Vacuole"],a:0,e:"Cytoplasm is the fluid in which organelles sit."},
+ {q:"The energy molecule produced by mitochondria is:",o:["DNA","ATP","RNA","Glucose only"],a:1,e:"Mitochondria produce ATP, the cell's energy currency."},
+ {q:"Which organelle moves materials through the cell?",o:["Endoplasmic reticulum","Cell wall","Nucleolus","Centriole"],a:0,e:"The endoplasmic reticulum transports materials within the cell."},
+ {q:"Which organelle digests waste and worn-out parts?",o:["Ribosome","Lysosome","Chloroplast","Nucleus"],a:1,e:"Lysosomes break down waste and cellular debris."},
+ {q:"Which structure is found in plant cells but NOT animal cells?",o:["Nucleus","Chloroplast","Ribosome","Mitochondrion"],a:1,e:"Chloroplasts (and a cell wall) are found in plant cells, not animal cells."},
+ {q:"What controls which substances move into and out of the cell?",o:["Cell membrane","Cytoplasm","Nucleolus","Ribosome"],a:0,e:"The cell membrane regulates transport in and out."},
+ {q:"The nucleus mainly contains the cell's:",o:["Protein","DNA","Fat","Water"],a:1,e:"The nucleus stores the cell's DNA."},
+ {q:"Ribosomes are the site where ___ are made.",o:["Lipids","Proteins","Sugars","Minerals"],a:1,e:"Ribosomes synthesize proteins."},
+ {q:"Which organelle releases energy from food molecules?",o:["Mitochondrion","Golgi apparatus","Nucleus","Vacuole"],a:0,e:"Mitochondria release energy by breaking down nutrients."},
+ {q:"The main role of the plant cell wall is to provide:",o:["Energy","Support and structure","Protein","Color"],a:1,e:"The cell wall gives the plant cell shape and support."},
+ {q:"Photosynthesis takes place in the:",o:["Mitochondrion","Chloroplast","Nucleus","Lysosome"],a:1,e:"Chloroplasts are the site of photosynthesis."},
+ {q:"Which organelle would you NOT expect in a typical animal cell?",o:["Nucleus","Mitochondrion","Chloroplast","Ribosome"],a:2,e:"Animal cells lack chloroplasts."},
+ {q:"Organelles are suspended within the cell's:",o:["Cytoplasm","Nucleus","Cell wall","Membrane pores"],a:0,e:"Organelles float in the cytoplasm."}
+],
+[
+ {q:"Which macromolecule provides quick energy?",o:["Carbohydrates","Nucleic acids","Water","Minerals"],a:0,e:"Carbohydrates are the body's quick energy source."},
+ {q:"Fats belong to which group of molecules?",o:["Proteins","Lipids","Carbohydrates","Nucleic acids"],a:1,e:"Fats are lipids; they store energy and build membranes."},
+ {q:"The building blocks of proteins are:",o:["Sugars","Amino acids","Fatty acids","Nucleotides"],a:1,e:"Proteins are chains of amino acids."},
+ {q:"DNA and RNA are examples of:",o:["Carbohydrates","Lipids","Proteins","Nucleic acids"],a:3,e:"DNA and RNA are nucleic acids, which store and carry genetic information."},
+ {q:"Proteins can act in the body as:",o:["Enzymes","Vitamins","Minerals","Gases"],a:0,e:"Many proteins function as enzymes that speed up reactions."},
+ {q:"Diffusion is the movement of particles from an area of:",o:["Low to high concentration","High to low concentration","No movement","Cold to hot only"],a:1,e:"In diffusion, particles spread from where they are crowded to where they are less crowded."},
+ {q:"Osmosis is specifically the movement of ___ across a membrane.",o:["Salt","Water","Protein","Oxygen"],a:1,e:"Osmosis is the diffusion of water across a membrane."},
+ {q:"Active transport is different because it:",o:["Needs energy and moves against the flow","Is always free","Only moves water","Never occurs"],a:0,e:"Active transport uses energy to move substances against their concentration gradient."},
+ {q:"Which process requires the cell to spend energy?",o:["Diffusion","Osmosis","Active transport","Settling"],a:2,e:"Active transport requires energy (ATP)."},
+ {q:"Which process does NOT require energy?",o:["Active transport","Diffusion","Pumping ions uphill","Endocytosis"],a:1,e:"Diffusion is passive and needs no energy."},
+ {q:"The main job of carbohydrates is to provide:",o:["Genetic code","Energy","Waterproofing","Color"],a:1,e:"Carbohydrates mainly supply energy."},
+ {q:"Which macromolecule stores genetic information?",o:["Lipid","Nucleic acid","Carbohydrate","Protein"],a:1,e:"Nucleic acids (DNA/RNA) store genetic information."},
+ {q:"Enzymes are a type of:",o:["Carbohydrate","Lipid","Protein","Mineral"],a:2,e:"Enzymes are proteins that speed up chemical reactions."},
+ {q:"Water moving into a cell across its membrane is an example of:",o:["Active transport","Osmosis","Respiration","Digestion"],a:1,e:"Water crossing the membrane is osmosis."},
+ {q:"Which is NOT one of the four main groups of biological molecules?",o:["Carbohydrates","Lipids","Minerals","Proteins"],a:2,e:"The four groups are carbohydrates, lipids, proteins and nucleic acids; minerals are not one of them."},
+ {q:"Lipids are important for building cell:",o:["Membranes","DNA","Ribosomes","Nuclei"],a:0,e:"Lipids form the cell membrane."},
+ {q:"Movement of molecules from a crowded area to a less crowded area is called:",o:["Osmosis","Diffusion","Active transport","Filtration"],a:1,e:"That spreading movement is diffusion."},
+ {q:"Which of these uses cellular energy (ATP)?",o:["Diffusion","Osmosis","Active transport","Evaporation"],a:2,e:"Active transport uses ATP."},
+ {q:"When amino acids link together, they form a:",o:["Sugar","Protein","Fat","Nucleus"],a:1,e:"Linked amino acids form a protein."},
+ {q:"A molecule that speeds up a chemical reaction is a(n):",o:["Enzyme","Lipid","Sugar","Salt"],a:0,e:"Enzymes (proteins) speed up reactions."}
+],
+[
+ {q:"The shape of a DNA molecule is a:",o:["Straight line","Double helix","Circle","Square"],a:1,e:"DNA is shaped like a twisted ladder, the double helix."},
+ {q:"In DNA, adenine (A) always pairs with:",o:["Guanine","Cytosine","Thymine","Uracil"],a:2,e:"Adenine pairs with thymine."},
+ {q:"In DNA, cytosine (C) always pairs with:",o:["Adenine","Thymine","Guanine","Uracil"],a:2,e:"Cytosine pairs with guanine."},
+ {q:"DNA carries the instructions to build:",o:["Proteins","Minerals","Water","Sugar only"],a:0,e:"DNA holds the code for building proteins."},
+ {q:"Mitosis produces:",o:["Four different cells","Two identical body cells","Sex cells","No cells"],a:1,e:"Mitosis makes two genetically identical cells for growth and repair."},
+ {q:"Meiosis produces:",o:["Identical body cells","Sex cells (gametes) with half the chromosomes","Bone cells","Blood only"],a:1,e:"Meiosis creates gametes with half the chromosome number."},
+ {q:"Which type of cell division makes egg and sperm cells?",o:["Mitosis","Meiosis","Diffusion","Osmosis"],a:1,e:"Meiosis produces gametes (egg and sperm)."},
+ {q:"Which cell division is used for growth and repair of the body?",o:["Meiosis","Mitosis","Fertilization","Digestion"],a:1,e:"Mitosis is used for growth and tissue repair."},
+ {q:"A dominant trait will appear when:",o:["Two copies are present only","At least one copy is present","No copies are present","Never"],a:1,e:"A dominant trait shows with even a single copy of the allele."},
+ {q:"A recessive trait appears only when:",o:["One copy is present","Two copies are present","No copies are present","A dominant copy is present"],a:1,e:"A recessive trait needs two recessive copies to appear."},
+ {q:"The trait you can actually observe is called the:",o:["Genotype","Phenotype","Allele","Chromosome"],a:1,e:"The phenotype is the visible trait."},
+ {q:"The genetic makeup of an organism is its:",o:["Phenotype","Genotype","Habitat","Cytoplasm"],a:1,e:"The genotype is the set of genes an organism has."},
+ {q:"Genes are passed to offspring from their:",o:["Friends","Parents","Food","Environment only"],a:1,e:"Offspring inherit genes from their parents."},
+ {q:"In a Punnett square, the letters represent:",o:["Cells","Alleles (gene versions)","Organs","Proteins"],a:1,e:"Letters in a Punnett square stand for alleles."},
+ {q:"Which molecule carries DNA's message out to build proteins?",o:["RNA","Lipid","Sugar","Water"],a:0,e:"RNA (messenger RNA) carries the genetic message from DNA."},
+ {q:"After meiosis, a sex cell has ___ the chromosomes of a body cell.",o:["Twice","Half","The same","None of"],a:1,e:"Gametes carry half the chromosome number of body cells."},
+ {q:"Two genetically identical cells are the result of:",o:["Meiosis","Mitosis","Osmosis","Diffusion"],a:1,e:"Mitosis yields two identical cells."},
+ {q:"A dominant allele is usually written as a:",o:["Lowercase letter","Capital letter","Number","Symbol"],a:1,e:"Dominant alleles are shown with capital letters."},
+ {q:"The base that pairs with guanine is:",o:["Adenine","Thymine","Cytosine","Uracil"],a:2,e:"Guanine pairs with cytosine."},
+ {q:"Visible traits such as eye color make up an organism's:",o:["Genotype","Phenotype","Karyotype","Genome"],a:1,e:"Observable traits are the phenotype."}
+]
+],
+"math":[
+[
+ {q:"The bottom number of a fraction is called the:",o:["Numerator","Denominator","Divisor","Quotient"],a:1,e:"The denominator is the bottom number; the numerator is on top."},
+ {q:"The top number of a fraction is called the:",o:["Denominator","Numerator","Factor","Remainder"],a:1,e:"The numerator is the top number of a fraction."},
+ {q:"What is 1/3 + 1/4 ?",o:["2/7","7/12","1/7","5/12"],a:1,e:"Common denominator 12: 4/12 + 3/12 = 7/12."},
+ {q:"What is 1/2 + 1/3 ?",o:["2/5","5/6","1/6","2/6"],a:1,e:"Common denominator 6: 3/6 + 2/6 = 5/6."},
+ {q:"What is 3/4 - 1/4 ?",o:["1/2","2/4 only","1/4","4/8"],a:0,e:"3/4 - 1/4 = 2/4, which simplifies to 1/2."},
+ {q:"What is 5/6 - 1/3 ?",o:["1/2","4/6 only","1/3","2/3"],a:0,e:"1/3 = 2/6, so 5/6 - 2/6 = 3/6 = 1/2."},
+ {q:"What is 1/2 × 1/2 ?",o:["1/4","1/2","2/4 only","1"],a:0,e:"Multiply straight across: 1×1 over 2×2 = 1/4."},
+ {q:"What is 2/3 × 3/5 ?",o:["6/8","2/5","5/15","1/2"],a:1,e:"6/15 simplifies to 2/5."},
+ {q:"What is 1/2 ÷ 1/4 ?",o:["1/8","2","4","1/2"],a:1,e:"Flip and multiply: 1/2 × 4/1 = 4/2 = 2."},
+ {q:"What is 3/4 ÷ 1/2 ?",o:["3/8","1 1/2","2","3/4"],a:1,e:"3/4 × 2/1 = 6/4 = 1 1/2."},
+ {q:"Simplify 4/8 to lowest terms.",o:["1/2","2/4","1/4","4/8"],a:0,e:"Divide top and bottom by 4: 1/2."},
+ {q:"Simplify 6/9 to lowest terms.",o:["3/4","2/3","1/3","6/9"],a:1,e:"Divide top and bottom by 3: 2/3."},
+ {q:"Which fraction is larger?",o:["3/5","2/3","They are equal","Cannot tell"],a:1,e:"2/3 is about 0.67 and 3/5 is 0.60, so 2/3 is larger."},
+ {q:"Write 1 1/2 as an improper fraction.",o:["3/2","2/3","1/2","4/2"],a:0,e:"1 1/2 = (2×1+1)/2 = 3/2."},
+ {q:"Write 7/2 as a mixed number.",o:["2 1/2","3 1/2","3","7 1/2"],a:1,e:"7 ÷ 2 = 3 remainder 1, so 3 1/2."},
+ {q:"What is 2/3 + 1/6 ?",o:["3/9","5/6","1/2","3/6"],a:1,e:"2/3 = 4/6, so 4/6 + 1/6 = 5/6."},
+ {q:"What is 5/8 - 1/8 ?",o:["1/2","4/16","6/8","1/4"],a:0,e:"4/8 simplifies to 1/2."},
+ {q:"What is 1/3 of 12 ?",o:["3","4","6","36"],a:1,e:"12 ÷ 3 = 4."},
+ {q:"What is 3/4 of 8 ?",o:["4","6","8","12"],a:1,e:"8 ÷ 4 = 2, then 2 × 3 = 6."},
+ {q:"What is 3/4 × 2 ?",o:["3/2 (1 1/2)","6/8","5/4","3/8"],a:0,e:"3/4 × 2 = 6/4 = 3/2, which is 1 1/2."}
+],
+[
+ {q:"Write 3/4 as a decimal.",o:["0.34","0.75","0.43","0.70"],a:1,e:"3 ÷ 4 = 0.75."},
+ {q:"Write 1/2 as a decimal.",o:["0.5","0.2","0.12","0.25"],a:0,e:"1 ÷ 2 = 0.5."},
+ {q:"Write 1/4 as a decimal.",o:["0.14","0.4","0.25","0.75"],a:2,e:"1 ÷ 4 = 0.25."},
+ {q:"Write 0.75 as a percent.",o:["7.5%","75%","0.75%","750%"],a:1,e:"Move the decimal two places right: 75%."},
+ {q:"Write 0.2 as a percent.",o:["2%","20%","0.2%","200%"],a:1,e:"0.2 = 20%."},
+ {q:"Write 0.05 as a percent.",o:["0.5%","5%","50%","0.05%"],a:1,e:"0.05 = 5%."},
+ {q:"What is 20% of 80 ?",o:["16","18","1.6","40"],a:0,e:"0.20 × 80 = 16."},
+ {q:"What is 25% of 40 ?",o:["8","10","15","20"],a:1,e:"0.25 × 40 = 10."},
+ {q:"What is 10% of 250 ?",o:["2.5","25","250","125"],a:1,e:"0.10 × 250 = 25."},
+ {q:"What is 50% of 90 ?",o:["30","45","60","90"],a:1,e:"Half of 90 is 45."},
+ {q:"Write 0.5 as a fraction.",o:["1/5","1/2","5/1","1/50"],a:1,e:"0.5 = 1/2."},
+ {q:"Write 0.2 as a fraction.",o:["1/2","1/5","2/1","1/20"],a:1,e:"0.2 = 2/10 = 1/5."},
+ {q:"Write 0.25 as a fraction.",o:["1/2","1/4","2/5","1/25"],a:1,e:"0.25 = 25/100 = 1/4."},
+ {q:"Write 40% as a decimal.",o:["4.0","0.4","0.04","40.0"],a:1,e:"40% = 0.40."},
+ {q:"Write 5% as a decimal.",o:["0.5","0.05","5.0","0.005"],a:1,e:"5% = 0.05."},
+ {q:"What is 0.3 + 0.4 ?",o:["0.7","0.34","0.12","7.0"],a:0,e:"0.3 + 0.4 = 0.7."},
+ {q:"What is 1.5 + 2.25 ?",o:["3.75","3.30","3.25","4.75"],a:0,e:"1.50 + 2.25 = 3.75."},
+ {q:"What is 3.2 × 100 ?",o:["32","320","3200","0.032"],a:1,e:"Move the decimal two places right: 320."},
+ {q:"Which number is the largest?",o:["0.5","0.05","0.45","0.4"],a:0,e:"0.5 is greater than 0.45, 0.4 and 0.05."},
+ {q:"Write 75% as a fraction in lowest terms.",o:["7/5","3/4","3/5","75/10"],a:1,e:"75/100 simplifies to 3/4."}
+],
+[
+ {q:"A ratio is used to:",o:["Add two numbers","Compare two quantities","Divide by zero","Round numbers"],a:1,e:"A ratio compares two amounts."},
+ {q:"A proportion (two equal ratios) is solved by:",o:["Adding","Cross-multiplying","Subtracting","Rounding"],a:1,e:"Set the ratios equal and cross-multiply."},
+ {q:"If 3 tablets contain 150 mg, how many tablets give 250 mg?",o:["4","5","6","2.5"],a:1,e:"Each tablet is 50 mg (150÷3); 250÷50 = 5 tablets."},
+ {q:"The ratio of nurses to doctors is 4:1. With 20 doctors, how many nurses?",o:["24","40","80","16"],a:2,e:"4/1 = x/20, so x = 80 nurses."},
+ {q:"If 5 mL contains 25 mg, how many mg are in 10 mL?",o:["30","50","75","100"],a:1,e:"25÷5 = 5 mg/mL; 5 × 10 = 50 mg."},
+ {q:"Solve for x: x/4 = 3.",o:["7","12","1","0.75"],a:1,e:"Multiply both sides by 4: x = 12."},
+ {q:"Solve for x: 2x = 10.",o:["5","8","12","20"],a:0,e:"Divide both sides by 2: x = 5."},
+ {q:"Solve for x: x + 5 = 12.",o:["5","7","17","60"],a:1,e:"Subtract 5 from both sides: x = 7."},
+ {q:"Solve for x: x - 3 = 9.",o:["6","12","3","27"],a:1,e:"Add 3 to both sides: x = 12."},
+ {q:"If 1 tablet = 20 mg, how many tablets give 60 mg?",o:["2","3","4","6"],a:1,e:"60 ÷ 20 = 3 tablets."},
+ {q:"If 2 tablets = 100 mg, how many tablets give 300 mg?",o:["4","5","6","3"],a:2,e:"Each tablet is 50 mg; 300 ÷ 50 = 6 tablets."},
+ {q:"The ratio 6:2 simplifies to:",o:["2:1","3:1","6:1","1:3"],a:1,e:"Divide both sides by 2: 3:1."},
+ {q:"Solve the proportion 3/4 = x/8.",o:["4","6","8","12"],a:1,e:"Cross-multiply: 3×8 = 24; 24÷4 = 6."},
+ {q:"If 10 mg is in 2 mL, how many mL contain 30 mg?",o:["3","6","15","5"],a:1,e:"5 mg/mL (10÷2); 30÷5 = 6 mL."},
+ {q:"Solve for x: 3x = 21.",o:["6","7","18","24"],a:1,e:"Divide both sides by 3: x = 7."},
+ {q:"Solve for x: x/2 = 8.",o:["4","10","16","6"],a:2,e:"Multiply both sides by 2: x = 16."},
+ {q:"An order is 250 mg. Tablets are 125 mg each. How many tablets?",o:["1","2","3","4"],a:1,e:"250 ÷ 125 = 2 tablets."},
+ {q:"An order is 500 mg. Tablets are 250 mg each. How many tablets?",o:["1","2","3","5"],a:1,e:"500 ÷ 250 = 2 tablets."},
+ {q:"If 4 apples cost $2, how much do 12 apples cost?",o:["$4","$6","$8","$12"],a:1,e:"Each apple is $0.50; 12 × $0.50 = $6."},
+ {q:"To keep a proportion true, you must do the same thing to:",o:["Only one side","Both sides","Neither side","The middle"],a:1,e:"Whatever you do to one side, do to the other."}
+],
+[
+ {q:"How many milligrams are in 1 gram?",o:["10","100","1,000","0.001"],a:2,e:"1 g = 1,000 mg."},
+ {q:"How many grams are in 1 kilogram?",o:["100","1,000","10","1,000,000"],a:1,e:"1 kg = 1,000 g."},
+ {q:"How many milliliters are in 1 liter?",o:["10","100","1,000","1"],a:2,e:"1 L = 1,000 mL."},
+ {q:"1,000 mL equals how many liters?",o:["10 L","1 L","100 L","0.1 L"],a:1,e:"1,000 mL = 1 L."},
+ {q:"500 mg equals how many grams?",o:["5 g","0.5 g","50 g","0.05 g"],a:1,e:"500 mg ÷ 1,000 = 0.5 g."},
+ {q:"2 kg equals how many grams?",o:["200 g","2,000 g","20 g","20,000 g"],a:1,e:"2 × 1,000 = 2,000 g."},
+ {q:"The Roman numeral XIV equals:",o:["12","14","16","19"],a:1,e:"X is 10 and IV is 4, so 14."},
+ {q:"The Roman numeral IX equals:",o:["9","11","6","4"],a:0,e:"I before X means 10 − 1 = 9."},
+ {q:"The Roman numeral VII equals:",o:["5","6","7","12"],a:2,e:"V is 5 and II is 2, so 7."},
+ {q:"The Roman numeral XL equals:",o:["40","60","15","90"],a:0,e:"X before L means 50 − 10 = 40."},
+ {q:"The Roman numeral L equals:",o:["5","50","100","500"],a:1,e:"L stands for 50."},
+ {q:"The Roman numeral C equals:",o:["100","500","1,000","50"],a:0,e:"C stands for 100."},
+ {q:"The Roman numeral M equals:",o:["100","500","1,000","5,000"],a:2,e:"M stands for 1,000."},
+ {q:"The Roman numeral XXV equals:",o:["15","20","25","30"],a:2,e:"XX is 20 and V is 5, so 25."},
+ {q:"What is 1430 in standard (a.m./p.m.) time?",o:["4:30 a.m.","2:30 p.m.","12:30 p.m.","4:30 p.m."],a:1,e:"14 − 12 = 2, so 1430 is 2:30 p.m."},
+ {q:"What is 0800 in standard time?",o:["8:00 a.m.","8:00 p.m.","10:00 a.m.","6:00 a.m."],a:0,e:"0800 is 8:00 a.m."},
+ {q:"What is 2000 in standard time?",o:["2:00 a.m.","10:00 p.m.","8:00 p.m.","12:00 a.m."],a:2,e:"20 − 12 = 8, so 2000 is 8:00 p.m."},
+ {q:"What is 1:00 p.m. in military time?",o:["0100","1300","1200","0130"],a:1,e:"1:00 p.m. is 12 + 1 = 1300."},
+ {q:"250 mg equals how many grams?",o:["2.5 g","0.25 g","25 g","0.025 g"],a:1,e:"250 ÷ 1,000 = 0.25 g."},
+ {q:"3 liters equals how many milliliters?",o:["300 mL","3,000 mL","30 mL","30,000 mL"],a:1,e:"3 × 1,000 = 3,000 mL."}
+]
+],
+"reading":[
+[
+ {q:"The main idea of a passage is:",o:["The first word","The central point it makes","Any small detail","The longest sentence"],a:1,e:"The main idea is the overall point of the passage."},
+ {q:"How is the topic different from the main idea?",o:["They are the same","The topic is a word or two; the main idea is the full point","The topic is longer","The main idea is a single word"],a:1,e:"The topic is what it's about; the main idea is the point being made about it."},
+ {q:"The main idea is often found in the:",o:["Middle only","First or last sentence","Title only","Footnotes"],a:1,e:"Main ideas frequently appear in the first or last sentence."},
+ {q:"Supporting details in a passage are there to:",o:["Confuse you","Back up the main idea","Replace the main idea","End the passage"],a:1,e:"Details give facts and examples that support the main idea."},
+ {q:"Read: 'Walking daily strengthens the heart, lowers stress, and helps you sleep.' The main idea is:",o:["Walking is boring","Walking has several health benefits","Everyone hates walking","Sleep is impossible"],a:1,e:"The sentence lists benefits, so the point is that walking benefits health."},
+ {q:"A good title usually reflects the passage's:",o:["Longest word","Main idea or topic","Page number","Author's name"],a:1,e:"Titles point to the main idea or topic."},
+ {q:"Words or ideas that repeat in a passage usually signal:",o:["A mistake","What is important","The ending","Nothing"],a:1,e:"Repetition highlights the important topic or idea."},
+ {q:"Compared with a detail, the main idea is:",o:["More specific","Broader","Shorter always","Unimportant"],a:1,e:"The main idea is broader; details are specific."},
+ {q:"Read: 'The clinic added evening hours, weekend slots, and online booking.' The main idea is:",o:["The clinic is closing","The clinic made visits more convenient","Nobody uses the clinic","Online booking failed"],a:1,e:"All the changes make visits easier, so that's the point."},
+ {q:"If every sentence describes a hospital's features, the topic is:",o:["The hospital","The weather","A recipe","A car"],a:0,e:"The repeated subject is the topic: the hospital."},
+ {q:"A summary of a passage should capture the:",o:["Main idea","Every word","Only the title","Just one detail"],a:0,e:"A summary states the main idea briefly."},
+ {q:"The controlling idea of a paragraph is another name for the:",o:["Detail","Main idea","Title","Quote"],a:1,e:"The controlling idea is the main idea."},
+ {q:"Which of these is broad enough to be a main idea?",o:["The nurse wore blue scrubs","Good hand-washing prevents infections","The clock read 3 p.m.","There were six chairs"],a:1,e:"That statement makes a general point; the others are single details."},
+ {q:"A specific fact or example in a passage is a:",o:["Main idea","Detail","Title","Summary"],a:1,e:"Facts and examples are supporting details."},
+ {q:"The sentence that states the main point of a paragraph is the:",o:["Topic sentence","Footnote","Caption","Heading"],a:0,e:"The topic sentence states the paragraph's main idea."},
+ {q:"Most paragraphs have how many main ideas?",o:["One","Five","Ten","None"],a:0,e:"A well-written paragraph usually has one main idea."},
+ {q:"Read: 'Getting enough sleep improves memory, mood, and health.' The main idea is:",o:["Sleep is a waste of time","Sleep is important and beneficial","Memory does not matter","Mood never changes"],a:1,e:"The point is that sleep is beneficial."},
+ {q:"To find the main idea, ask what the passage is:",o:["Mostly about and its point","Colored like","Weighing","Priced at"],a:0,e:"The main idea answers what it is mostly about and the point being made."},
+ {q:"Details usually do which of the following?",o:["State the broad point","Give specific support","Replace the title","Confuse readers"],a:1,e:"Details provide specific support for the main idea."},
+ {q:"If a passage gives three reasons to drink water, the main idea is likely:",o:["Water is harmful","Drinking water is important","Nobody drinks water","Water tastes bad"],a:1,e:"Reasons in favor point to the idea that drinking water is important."}
+],
+[
+ {q:"Supporting details usually answer questions like:",o:["Who, what, when, where","Only why","Nothing","The title"],a:0,e:"Details give the who, what, when and where."},
+ {q:"An inference is:",o:["A fact stated directly","A conclusion from clues and reasoning","A spelling rule","The passage title"],a:1,e:"An inference is a logical conclusion based on clues, not stated outright."},
+ {q:"Read: 'The sky darkened and the wind began to howl.' You can infer:",o:["It is sunny","A storm is coming","It is a holiday","The passage is about food"],a:1,e:"Those clues suggest an approaching storm."},
+ {q:"Context: 'The patient was lethargic, sluggish and drowsy.' 'Lethargic' means:",o:["Cheerful","Tired and slow","Angry","Hungry"],a:1,e:"The nearby words define it as sluggish and drowsy."},
+ {q:"When a question asks for a specific fact, the answer is usually:",o:["Made up","Stated in the passage","In another book","Impossible to find"],a:1,e:"Detail answers are stated in the passage; go back and find them."},
+ {q:"To make an inference you combine clues with:",o:["Guessing wildly","Logic and reasoning","The title only","Nothing"],a:1,e:"An inference uses clues plus reasoning."},
+ {q:"Read: 'She grabbed an umbrella before stepping outside.' You can infer:",o:["It is snowing heavily","It might rain","She is going to sleep","She is cooking"],a:1,e:"Taking an umbrella suggests possible rain."},
+ {q:"Context: 'The tumor was benign, not harmful.' 'Benign' means:",o:["Dangerous","Harmless","Large","Painful"],a:1,e:"The phrase 'not harmful' defines benign as harmless."},
+ {q:"Read: 'He had not eaten all day, and his stomach growled loudly.' You can infer he is:",o:["Full","Hungry","Sleepy","Cold"],a:1,e:"Not eating plus a growling stomach means he is hungry."},
+ {q:"Context: 'The nurse asked him to ambulate, or walk, down the hall.' 'Ambulate' means:",o:["Sit","Walk","Sleep","Eat"],a:1,e:"The word 'or walk' defines ambulate."},
+ {q:"Read: 'The streets were wet and everyone carried umbrellas.' You can infer:",o:["It just rained","It is a desert","It is midnight","It is snowing"],a:0,e:"Wet streets and umbrellas suggest recent rain."},
+ {q:"Context: 'The patient was diaphoretic, sweating heavily.' 'Diaphoretic' means:",o:["Sweating","Shivering","Laughing","Sleeping"],a:0,e:"The phrase 'sweating heavily' defines diaphoretic."},
+ {q:"To locate a specific fact quickly, you should:",o:["Guess","Scan the passage","Skip it","Read the title only"],a:1,e:"Scanning helps you find a specific detail fast."},
+ {q:"A strong inference is based on:",o:["Feelings alone","Evidence in the text","The page number","Random guessing"],a:1,e:"Inferences must be grounded in textual evidence."},
+ {q:"Context: 'The medicine was potent, very strong.' 'Potent' means:",o:["Weak","Strong","Sweet","Cheap"],a:1,e:"The phrase 'very strong' defines potent."},
+ {q:"Read: 'The baby was crying and rubbing its eyes.' You can infer the baby is:",o:["Hungry only","Tired","Angry","Cold"],a:1,e:"Rubbing eyes and fussing commonly signal tiredness."},
+ {q:"A nearby word or phrase that helps define a hard word is a:",o:["Context clue","Title","Footnote","Heading"],a:0,e:"That is a context clue."},
+ {q:"Context: 'Her abdomen was distended, or swollen.' 'Distended' means:",o:["Flat","Swollen","Warm","Bruised"],a:1,e:"The word 'or swollen' defines distended."},
+ {q:"Which of these is an inference rather than a stated fact?",o:["The sign said 'Closed'","The store was probably not open","The door was blue","It was 5 p.m."],a:1,e:"'Probably not open' is a conclusion drawn from the sign, not a stated fact."},
+ {q:"Details in a passage mainly serve to support the:",o:["Title","Main idea","Author's name","Page count"],a:1,e:"Details support the main idea."}
+],
+[
+ {q:"An author's purpose is usually to inform, persuade, entertain, or:",o:["Instruct","Sleep","Paint","Cook"],a:0,e:"The four common purposes are to inform, persuade, entertain and instruct."},
+ {q:"A step-by-step how-to article is mainly written to:",o:["Entertain","Instruct","Frighten","Persuade"],a:1,e:"How-to writing instructs the reader."},
+ {q:"An opinion column is mainly written to:",o:["Persuade","Bore","Confuse","Instruct"],a:0,e:"Opinion writing tries to persuade."},
+ {q:"'Tone' refers to the author's:",o:["Handwriting","Attitude toward the subject","Page count","Font"],a:1,e:"Tone is the author's attitude, sensed through word choice."},
+ {q:"A fact is a statement that:",o:["Can be proven","Is just a feeling","Everyone disagrees with","Is always wrong"],a:0,e:"A fact can be proven true."},
+ {q:"An opinion is a statement that:",o:["Can be measured","Expresses a belief or feeling","Is always true","Has a number"],a:1,e:"An opinion is a belief others might dispute."},
+ {q:"Which of these is a FACT?",o:["Summer is the best season","Water boils at 100 degrees Celsius","Blue is prettiest","Everyone should travel"],a:1,e:"The boiling point can be measured, so it's a fact."},
+ {q:"Which of these is an OPINION?",o:["The clinic has 20 beds","Nursing is the most rewarding career","The heart has four chambers","It is 3 p.m."],a:1,e:"'Most rewarding' is a belief, so it's an opinion."},
+ {q:"A funny short story is mainly meant to:",o:["Entertain","Instruct","Sell a product","Report news"],a:0,e:"A humorous story entertains."},
+ {q:"An author's word choices mainly reveal the:",o:["Tone","Page number","Font size","Word count"],a:0,e:"Word choice shows tone."},
+ {q:"'This is the worst movie ever made.' This statement is a(n):",o:["Fact","Opinion","Measurement","Definition"],a:1,e:"'Worst ever' is a personal judgment, an opinion."},
+ {q:"'The library opens at 9 a.m.' This statement is a(n):",o:["Opinion","Fact","Feeling","Guess"],a:1,e:"An opening time can be verified, so it's a fact."},
+ {q:"An advertisement's main purpose is usually to:",o:["Persuade you to buy","Teach history","Tell a joke","Report weather"],a:0,e:"Ads persuade the reader to buy or act."},
+ {q:"A textbook is mainly written to:",o:["Entertain","Inform","Persuade you to vote","Sell shoes"],a:1,e:"Textbooks inform and teach."},
+ {q:"Which word signals a negative tone?",o:["Delightful","Dreadful","Hopeful","Pleasant"],a:1,e:"'Dreadful' carries a negative attitude."},
+ {q:"Which statement is a fact?",o:["The building is beautiful","The building is 10 stories tall","The building is scary","The building is the best"],a:1,e:"Its height can be measured, making it a fact."},
+ {q:"Which statement is an opinion?",o:["The test has 50 questions","The test is too hard","The test starts at noon","The test is on paper"],a:1,e:"'Too hard' is a personal judgment."},
+ {q:"A recipe is written mainly to:",o:["Instruct","Persuade","Entertain","Report news"],a:0,e:"A recipe instructs you how to cook."},
+ {q:"'Everyone should exercise every day.' This statement is a(n):",o:["Fact","Opinion","Measurement","Law"],a:1,e:"'Should' signals a belief, so it's an opinion."},
+ {q:"If an author is trying to change your mind, the purpose is to:",o:["Inform","Persuade","Entertain","Instruct"],a:1,e:"Changing your mind is persuasion."}
+],
+[
+ {q:"A good FIRST step when reading a passage is to:",o:["Answer questions before reading","Skim to find the topic","Memorize every word","Skip the first paragraph"],a:1,e:"Skimming first gives you the topic and a mental map."},
+ {q:"Rereading a confusing sentence is:",o:["A waste of time","A smart strategy","Not allowed","A sign of failure"],a:1,e:"Rereading is a smart move that improves understanding."},
+ {q:"Breaking a passage into small parts as you read is called:",o:["Chunking","Skipping","Guessing","Erasing"],a:0,e:"Reading in small chunks is called chunking."},
+ {q:"The answer to a detail question is usually found:",o:["In the passage","In your memory","On another page","Nowhere"],a:0,e:"Detail answers are in the passage, so go back and find them."},
+ {q:"After finishing a paragraph, a helpful habit is to:",o:["Forget it","Summarize it in your own words","Rip the page","Start over completely"],a:1,e:"Summarizing in your own words checks your understanding."},
+ {q:"When reading a test passage, understanding matters more than:",o:["Accuracy","Speed","The topic","The questions"],a:1,e:"Comprehension is more important than reading fast."},
+ {q:"If a sentence does not make sense, you should:",o:["Skip the whole passage","Read it again slowly","Guess the answer","Close the book"],a:1,e:"Reread it slowly to understand."},
+ {q:"Following along with audio while reading can help with:",o:["Focus and comprehension","Nothing","Making it harder","Losing your place"],a:0,e:"Audio plus following the words supports focus and understanding."},
+ {q:"To find a specific fact quickly, a reader should:",o:["Scan for it","Reread everything twice","Guess","Give up"],a:0,e:"Scanning locates a specific fact fast."},
+ {q:"Previewing the headings before reading helps you:",o:["Know what is coming","Waste time","Skip the passage","Memorize nothing"],a:0,e:"Headings preview the structure and main points."},
+ {q:"Reading slowly and carefully usually means a reader is:",o:["A poor reader","Being careful, which is good","Wasting time","Cheating"],a:1,e:"Careful reading often means better understanding, not poor skill."},
+ {q:"Skimming means reading:",o:["Every word slowly","Quickly for the general idea","Backward","Only the last line"],a:1,e:"Skimming is fast reading for the gist."},
+ {q:"Scanning means looking for:",o:["The main idea","A specific detail","The author","The font"],a:1,e:"Scanning searches for a specific piece of information."},
+ {q:"Figuring out a word's meaning from the sentence around it uses:",o:["Context clues","A dictionary only","Guesswork","The title"],a:0,e:"Using surrounding words is using context clues."},
+ {q:"A strong reader who does not understand a part will:",o:["Move on and ignore it","Go back and reread","Skip the passage","Guess randomly"],a:1,e:"Rereading the tricky part is the strong-reader move."},
+ {q:"Taking short breaks during long reading can help with:",o:["Focus and tiredness","Losing the book","Nothing at all","Skipping questions"],a:0,e:"Short breaks help maintain focus and reduce fatigue."},
+ {q:"Restating a passage's point in your own words is called:",o:["Copying","Summarizing","Ignoring","Memorizing"],a:1,e:"Putting it in your own words is summarizing (paraphrasing)."},
+ {q:"Before answering the questions, you should first:",o:["Read the passage","Guess","Read only the title","Skip to the end"],a:0,e:"Read the passage before answering."},
+ {q:"If your eyes get tired while reading, one good option is to:",o:["Stop learning","Use the read-aloud audio","Skip everything","Rush faster"],a:1,e:"Letting the audio read to you helps when eyes tire."},
+ {q:"The main goal of reading is:",o:["Speed","Understanding","Turning pages","Finishing first"],a:1,e:"Understanding is the true goal of reading."}
+]
+],
+"grammar":[
+[
+ {q:"Which word is a NOUN?",o:["Quickly","Hospital","Gentle","Under"],a:1,e:"A noun names a person, place or thing; hospital is a place."},
+ {q:"Which word is a VERB?",o:["Chair","Run","Blue","Slowly"],a:1,e:"A verb shows action; run is an action."},
+ {q:"Which word is an ADJECTIVE?",o:["Sing","Bright","Loudly","Dog"],a:1,e:"An adjective describes a noun; bright describes something."},
+ {q:"Which word is an ADVERB?",o:["Happy","Jump","Quickly","Cat"],a:2,e:"An adverb often tells how; quickly describes an action."},
+ {q:"Which word is a PRONOUN?",o:["She","Table","Green","Run"],a:0,e:"A pronoun replaces a noun; she is a pronoun."},
+ {q:"Which word is a PREPOSITION?",o:["Under","Happy","Sing","Nurse"],a:0,e:"A preposition shows position or relationship; under is one."},
+ {q:"Which word is a CONJUNCTION?",o:["But","Table","Quickly","Blue"],a:0,e:"A conjunction joins words or ideas; but is one."},
+ {q:"Which word is an INTERJECTION?",o:["Wow!","Chair","Run","Gentle"],a:0,e:"An interjection expresses feeling; Wow! is one."},
+ {q:"In 'The nurse smiled,' the verb is:",o:["The","nurse","smiled","None"],a:2,e:"Smiled shows the action."},
+ {q:"In 'The tall doctor arrived,' the adjective is:",o:["The","tall","doctor","arrived"],a:1,e:"Tall describes the noun doctor."},
+ {q:"In 'He ran quickly,' the adverb is:",o:["He","ran","quickly","None"],a:2,e:"Quickly describes how he ran."},
+ {q:"A word that names a thing is a:",o:["Verb","Noun","Adverb","Preposition"],a:1,e:"Nouns name people, places and things."},
+ {q:"'They' is which part of speech?",o:["Noun","Verb","Pronoun","Adjective"],a:2,e:"They is a pronoun that replaces a noun."},
+ {q:"Which is a noun?",o:["Run","Blue","Chair","Quickly"],a:2,e:"Chair is a thing, so it is a noun."},
+ {q:"Which is a verb?",o:["Happy","Jump","Slowly","Cat"],a:1,e:"Jump is an action, so it is a verb."},
+ {q:"Adjectives often answer questions like:",o:["When?","What kind or how many?","Where exactly?","How fast?"],a:1,e:"Adjectives describe what kind, which one or how many."},
+ {q:"Many adverbs end in the letters:",o:["-ing","-ly","-ed","-s"],a:1,e:"Adverbs frequently end in -ly, like quickly or slowly."},
+ {q:"In 'She is kind,' the word 'kind' is a(n):",o:["Verb","Adjective","Adverb","Noun"],a:1,e:"Kind describes she, so it is an adjective."},
+ {q:"Which is an adjective?",o:["Sing","Bright","Loudly","Dog"],a:1,e:"Bright describes a noun, so it is an adjective."},
+ {q:"A word that connects two ideas, such as 'and' or 'or', is a:",o:["Noun","Conjunction","Pronoun","Verb"],a:1,e:"And, but and or are conjunctions."}
+],
+[
+ {q:"Choose the correct verb: 'The nurses ___ ready.'",o:["is","was","are","am"],a:2,e:"Plural subject 'nurses' takes the plural verb 'are'."},
+ {q:"Choose the correct verb: 'The nurse ___ ready.'",o:["are","is","were","am"],a:1,e:"Singular subject 'nurse' takes 'is'."},
+ {q:"Choose the correct verb: 'She ___ to work every day.'",o:["go","goes","going","gone"],a:1,e:"Singular 'she' takes 'goes'."},
+ {q:"Choose the correct verb: 'They ___ working hard.'",o:["is","was","are","am"],a:2,e:"Plural 'they' takes 'are'."},
+ {q:"Choose the correct verb: 'Each student ___ a textbook.'",o:["have","has","are","were"],a:1,e:"'Each' is singular, so use 'has'."},
+ {q:"Choose the correct verb: 'The doctors ___ busy today.'",o:["is","are","was","am"],a:1,e:"Plural 'doctors' takes 'are'."},
+ {q:"Choose the correct verb: 'The dog ___ loudly.'",o:["bark","barks","barking","are"],a:1,e:"Singular 'dog' takes 'barks'."},
+ {q:"Choose the correct verb: 'The dogs ___ loudly.'",o:["barks","bark","is barking","was"],a:1,e:"Plural 'dogs' takes 'bark'."},
+ {q:"A singular subject takes a ___ verb.",o:["plural","singular","past","future"],a:1,e:"Singular subjects need singular verbs."},
+ {q:"A plural subject takes a ___ verb.",o:["singular","plural","silent","short"],a:1,e:"Plural subjects need plural verbs."},
+ {q:"A pronoun must agree with the noun it replaces, called its:",o:["adverb","antecedent","adjective","article"],a:1,e:"The noun a pronoun replaces is its antecedent."},
+ {q:"Choose the correct pronoun: 'Maria finished ___ homework.'",o:["their","his","her","its"],a:2,e:"Maria is singular and female, so 'her'."},
+ {q:"Choose the correct pronoun: 'The children played with ___ toys.'",o:["its","his","their","her"],a:2,e:"Children is plural, so 'their'."},
+ {q:"Choose the correct verb: 'One of the nurses ___ late.'",o:["are","were","is","have"],a:2,e:"The subject is 'one' (singular), so 'is'."},
+ {q:"Choose the correct verb: 'The box of tools ___ heavy.'",o:["are","is","were","have"],a:1,e:"The subject is 'box' (singular), so 'is'."},
+ {q:"Choose the correct verb: 'My friends and I ___ going.'",o:["is","am","are","was"],a:2,e:"A compound subject joined by 'and' is plural, so 'are'."},
+ {q:"Choose the correct verb: 'Neither answer ___ correct.'",o:["are","is","were","have"],a:1,e:"'Neither' is singular, so 'is'."},
+ {q:"Choose the correct verb: 'The list of names ___ long.'",o:["are","is","were","have"],a:1,e:"The subject is 'list' (singular), so 'is'."},
+ {q:"Choose the correct pronoun: 'The boy lost ___ book.'",o:["her","his","their","its"],a:1,e:"The boy is singular and male, so 'his'."},
+ {q:"Choose the correct verb: 'The baby and the puppy ___ sleeping.'",o:["is","are","was","am"],a:1,e:"Two subjects joined by 'and' are plural, so 'are'."}
+],
+[
+ {q:"Complete correctly: '___ going to the clinic this morning.' (they are)",o:["Their","There","They're","Theyre"],a:2,e:"They're means 'they are'."},
+ {q:"Choose the correct word: 'The dog wagged ___ tail.'",o:["it's","its","its'","it is"],a:1,e:"Its shows possession; it's means 'it is'."},
+ {q:"Choose the correct word: '___ appointment is at noon.' (belongs to you)",o:["You're","Your","Yours","Youre"],a:1,e:"Your shows possession."},
+ {q:"Choose the correct word: 'The medicine had a strong ___.' (a result)",o:["affect","effect","affects","efect"],a:1,e:"Effect is the noun meaning a result."},
+ {q:"Choose the correct word: 'I have ___ many books to carry.' (also/excess)",o:["to","two","too","tow"],a:2,e:"Too means also or excessively."},
+ {q:"Choose the correct word: 'She has ___ cats.' (the number)",o:["to","too","two","tow"],a:2,e:"Two is the number 2."},
+ {q:"Choose the correct word: 'Put the book over ___.' (that place)",o:["their","there","they're","theyre"],a:1,e:"There refers to a place."},
+ {q:"Choose the correct word: '___ car is red.' (belongs to them)",o:["There","Their","They're","Theyre"],a:1,e:"Their shows possession."},
+ {q:"Choose the correct word: '___ raining outside.' (it is)",o:["Its","It's","Its'","Itis"],a:1,e:"It's is the contraction of 'it is'."},
+ {q:"Choose the correct word: '___ very kind to help.' (you are)",o:["Your","You're","Yours","Youre"],a:1,e:"You're means 'you are'."},
+ {q:"Choose the correct word: 'She is taller ___ me.'",o:["then","than","that","thin"],a:1,e:"Than is used for comparisons."},
+ {q:"Choose the correct word: 'First we eat, ___ we leave.'",o:["than","then","that","thin"],a:1,e:"Then refers to time or sequence."},
+ {q:"Choose the correct word: 'Everyone came ___ John.'",o:["accept","except","expect","axcept"],a:1,e:"Except means 'not including'."},
+ {q:"Choose the correct word: 'Please ___ my apology.'",o:["except","accept","expect","acept"],a:1,e:"Accept means to receive or agree to."},
+ {q:"Choose the correct word: 'The weather can ___ my mood.' (a verb)",o:["affect","effect","efect","affects"],a:0,e:"Affect is the verb meaning to influence."},
+ {q:"Choose the correct word: 'I want ___ go home.'",o:["too","two","to","tow"],a:2,e:"To is used before a verb (to go)."},
+ {q:"Choose the correct word: '___ is a problem with the plan.' (it exists)",o:["Their","There","They're","Theyre"],a:1,e:"There introduces something that exists."},
+ {q:"Choose the correct word: 'Try not to ___ your keys.'",o:["loose","lose","loss","luse"],a:1,e:"Lose means to misplace; loose means not tight."},
+ {q:"Choose the correct word: 'The cat licked ___ paw.'",o:["it's","its","its'","it is"],a:1,e:"Its shows possession."},
+ {q:"Choose the correct word: '___ shoes are untied.' (belongs to you)",o:["You're","Your","Yours","Youre"],a:1,e:"Your shows possession."}
+],
+[
+ {q:"A complete sentence must have a subject, a verb, and a:",o:["comma","complete thought","capital only","question"],a:1,e:"A complete sentence expresses a complete thought."},
+ {q:"'Running down the hall.' is a:",o:["complete sentence","fragment","run-on","question"],a:1,e:"It lacks a subject and complete thought, so it is a fragment."},
+ {q:"'Because she was late.' is a:",o:["complete sentence","fragment","run-on","command"],a:1,e:"It is a dependent clause, so it is a fragment."},
+ {q:"'The patient rested.' is a:",o:["fragment","complete sentence","run-on","phrase"],a:1,e:"It has a subject, verb and complete thought."},
+ {q:"Two complete sentences joined incorrectly form a:",o:["fragment","run-on","phrase","clause"],a:1,e:"That error is a run-on sentence."},
+ {q:"Commas are used to separate items in a:",o:["list","title","name","number"],a:0,e:"Use commas between items in a list."},
+ {q:"An apostrophe can show possession or a:",o:["question","contraction","list","plural"],a:1,e:"Apostrophes show possession or contractions."},
+ {q:"In 'the nurse's badge,' the apostrophe shows:",o:["a contraction","possession","a plural","a question"],a:1,e:"It shows the badge belongs to the nurse."},
+ {q:"In 'don't,' the apostrophe shows a:",o:["possession","contraction","plural","list"],a:1,e:"Don't is a contraction of 'do not'."},
+ {q:"You should always capitalize the first word of a:",o:["list","sentence","paragraph only","question only"],a:1,e:"Capitalize the first word of every sentence."},
+ {q:"You should capitalize the names of:",o:["common objects","specific people and places","all verbs","all adjectives"],a:1,e:"Proper nouns (specific people and places) are capitalized."},
+ {q:"Which is a complete sentence?",o:["After the long shift.","The doctor listened.","Walking to the car.","Since it was raining."],a:1,e:"'The doctor listened' has a subject, verb and complete thought."},
+ {q:"Which sentence needs commas? 'I bought apples oranges and pears.'",o:["No commas needed","Commas after apples and oranges","A comma after bought","A comma after pears"],a:1,e:"Separate list items: apples, oranges, and pears."},
+ {q:"A group of words missing a subject or a verb is a:",o:["complete sentence","fragment","paragraph","list"],a:1,e:"That is a sentence fragment."},
+ {q:"'She studied hard she passed the test.' is a:",o:["fragment","run-on","complete sentence","question"],a:1,e:"Two sentences are jammed together, so it is a run-on."},
+ {q:"A statement (telling sentence) should end with a:",o:["question mark","period","comma","dash"],a:1,e:"End a statement with a period."},
+ {q:"A question should end with a:",o:["period","question mark","comma","exclamation point"],a:1,e:"End a question with a question mark."},
+ {q:"Which word should be capitalized? 'we visited paris.'",o:["visited","paris","Both 'we' and 'paris'","none"],a:2,e:"Capitalize 'We' (first word) and 'Paris' (a place)."},
+ {q:"Use a comma before 'and', 'but' or 'or' when it joins two:",o:["single words","complete sentences","numbers","titles"],a:1,e:"A comma goes before a conjunction linking two complete sentences."},
+ {q:"Every sentence should begin with a:",o:["comma","capital letter","number","apostrophe"],a:1,e:"Sentences begin with a capital letter."}
+]
+],
+"vocab":[
+[
+ {q:"Most medical words are made of a prefix, a root, and a:",o:["vowel","suffix","comma","number"],a:1,e:"The three main parts are prefix, root and suffix."},
+ {q:"The word part at the beginning of a medical term is the:",o:["root","prefix","suffix","ending"],a:1,e:"The prefix comes at the front."},
+ {q:"The word part at the end of a medical term is the:",o:["prefix","root","suffix","stem"],a:2,e:"The suffix comes at the end."},
+ {q:"The part that carries the core meaning (often a body part) is the:",o:["prefix","root","suffix","accent"],a:1,e:"The root holds the core meaning."},
+ {q:"In 'hypothyroidism,' the part 'hypo' is the:",o:["root","prefix","suffix","ending"],a:1,e:"'Hypo' at the front is the prefix, meaning low."},
+ {q:"In 'hypothyroidism,' the part 'ism' is the:",o:["prefix","root","suffix","vowel"],a:2,e:"'Ism' at the end is the suffix, meaning a condition."},
+ {q:"In 'hypothyroidism,' the part 'thyroid' is the:",o:["prefix","root","suffix","ending"],a:1,e:"'Thyroid' in the middle is the root (the gland)."},
+ {q:"Learning word parts mainly helps you:",o:["Spell faster only","Decode words you have never seen","Skip studying","Speak louder"],a:1,e:"Knowing parts lets you figure out unfamiliar terms."},
+ {q:"The prefix usually tells you about:",o:["The core body part","Location, amount or time","Nothing","The spelling"],a:1,e:"Prefixes often signal where, how much or when."},
+ {q:"The suffix usually tells you about:",o:["The condition or procedure","The color","The author","The price"],a:0,e:"Suffixes often describe a condition, disease or procedure."},
+ {q:"In 'gastritis,' the root 'gastr' means:",o:["heart","stomach","liver","lung"],a:1,e:"Gastr/o refers to the stomach."},
+ {q:"In 'gastritis,' the suffix 'itis' means:",o:["removal","inflammation","study of","pain"],a:1,e:"-itis means inflammation."},
+ {q:"To understand a long medical word, you should:",o:["Guess","Break it into parts","Ignore it","Only read the middle"],a:1,e:"Break it into prefix, root and suffix."},
+ {q:"The main body part in a medical term is named by the:",o:["prefix","root","suffix","accent"],a:1,e:"The root names the body part."},
+ {q:"In 'appendectomy,' the suffix 'ectomy' means:",o:["inflammation","surgical removal","study of","enlargement"],a:1,e:"-ectomy means surgical removal."},
+ {q:"A prefix is placed ___ the root.",o:["after","before","inside","below"],a:1,e:"A prefix comes before the root."},
+ {q:"A suffix is placed ___ the root.",o:["before","after","above","around"],a:1,e:"A suffix comes after the root."},
+ {q:"In 'cardiology,' the suffix 'ology' means:",o:["removal","study of","pain","inflammation"],a:1,e:"-ology means the study of."},
+ {q:"Combining 'hyper' + 'tension' creates a word meaning:",o:["low pressure","high pressure/tension","no pressure","normal pressure"],a:1,e:"Hyper means high, so high tension (pressure)."},
+ {q:"Knowing a few hundred word parts lets you understand:",o:["only a few words","thousands of terms","no terms","only prefixes"],a:1,e:"Word parts unlock the meaning of thousands of medical terms."}
+],
+[
+ {q:"The prefix 'hyper-' means:",o:["low","high or excessive","around","slow"],a:1,e:"Hyper means high or excessive."},
+ {q:"The prefix 'hypo-' means:",o:["high","low or under","fast","between"],a:1,e:"Hypo means low or under."},
+ {q:"The prefix 'brady-' means:",o:["fast","slow","around","without"],a:1,e:"Brady means slow."},
+ {q:"The prefix 'tachy-' means:",o:["slow","fast","under","after"],a:1,e:"Tachy means fast."},
+ {q:"The prefix 'a-' or 'an-' means:",o:["with","without","around","before"],a:1,e:"A- / an- means without."},
+ {q:"The prefix 'dys-' means:",o:["easy","difficult or painful","fast","around"],a:1,e:"Dys means difficult or painful."},
+ {q:"The prefix 'peri-' means:",o:["within","around","after","without"],a:1,e:"Peri means around."},
+ {q:"The prefix 'intra-' means:",o:["between","within","around","before"],a:1,e:"Intra means within."},
+ {q:"The prefix 'inter-' means:",o:["within","between","around","after"],a:1,e:"Inter means between."},
+ {q:"The prefix 'pre-' means:",o:["after","before","around","under"],a:1,e:"Pre means before."},
+ {q:"The prefix 'post-' means:",o:["before","after","within","without"],a:1,e:"Post means after."},
+ {q:"The prefix 'sub-' means:",o:["above","under or below","around","fast"],a:1,e:"Sub means under or below."},
+ {q:"'Bradycardia' means a heart rate that is:",o:["fast","slow","normal","irregular only"],a:1,e:"Brady means slow, cardia means heart."},
+ {q:"'Tachycardia' means a heart rate that is:",o:["slow","fast","stopped","weak"],a:1,e:"Tachy means fast, cardia means heart."},
+ {q:"'Hypertension' means blood pressure that is:",o:["low","high","normal","absent"],a:1,e:"Hyper means high; hypertension is high blood pressure."},
+ {q:"'Hypotension' means blood pressure that is:",o:["high","low","normal","rising"],a:1,e:"Hypo means low; hypotension is low blood pressure."},
+ {q:"'Dysphagia' refers to difficulty with:",o:["breathing","swallowing","seeing","hearing"],a:1,e:"Dys means difficult; -phagia relates to swallowing."},
+ {q:"The 'peri-' in 'pericardium' tells you it is located:",o:["inside the heart","around the heart","below the heart","without a heart"],a:1,e:"Peri means around, so around the heart."},
+ {q:"'Intravenous' means within a:",o:["muscle","vein","bone","nerve"],a:1,e:"Intra means within; venous refers to a vein."},
+ {q:"'Postoperative' means the period ___ surgery.",o:["before","during","after","without"],a:2,e:"Post means after, so after surgery."}
+],
+[
+ {q:"The root 'cardi/o' refers to the:",o:["kidney","liver","heart","lung"],a:2,e:"Cardi/o means heart."},
+ {q:"The root 'gastr/o' refers to the:",o:["stomach","heart","brain","skin"],a:0,e:"Gastr/o means stomach."},
+ {q:"The root 'hepat/o' refers to the:",o:["kidney","liver","lung","bone"],a:1,e:"Hepat/o means liver."},
+ {q:"The root 'nephr/o' refers to the:",o:["nerve","kidney","heart","skin"],a:1,e:"Nephr/o means kidney."},
+ {q:"The root 'neur/o' refers to the:",o:["nerve","bone","blood","lung"],a:0,e:"Neur/o means nerve."},
+ {q:"The root 'oste/o' refers to the:",o:["skin","bone","stomach","heart"],a:1,e:"Oste/o means bone."},
+ {q:"The root 'pulmon/o' refers to the:",o:["lung","liver","kidney","nerve"],a:0,e:"Pulmon/o means lung."},
+ {q:"The root 'derm/o' refers to the:",o:["blood","skin","bone","brain"],a:1,e:"Derm/o means skin."},
+ {q:"The root 'hem/o' refers to:",o:["bone","blood","skin","nerve"],a:1,e:"Hem/o means blood."},
+ {q:"The suffix '-itis' means:",o:["removal","inflammation","study of","pain"],a:1,e:"-itis means inflammation."},
+ {q:"The suffix '-ectomy' means:",o:["inflammation","surgical removal","enlargement","disease"],a:1,e:"-ectomy means surgical removal."},
+ {q:"The suffix '-ology' means:",o:["pain","study of","removal","condition"],a:1,e:"-ology means the study of."},
+ {q:"The suffix '-pathy' means:",o:["disease","removal","study of","opening"],a:0,e:"-pathy means disease."},
+ {q:"The suffix '-megaly' means:",o:["shrinking","enlargement","pain","removal"],a:1,e:"-megaly means enlargement."},
+ {q:"The suffix '-algia' means:",o:["pain","inflammation","study","removal"],a:0,e:"-algia means pain."},
+ {q:"'Hepatitis' means inflammation of the:",o:["heart","liver","kidney","lung"],a:1,e:"Hepat = liver, -itis = inflammation."},
+ {q:"'Nephrology' means the study of the:",o:["nerves","kidneys","bones","lungs"],a:1,e:"Nephr = kidney, -ology = study of."},
+ {q:"'Dermatology' means the study of the:",o:["blood","skin","bones","heart"],a:1,e:"Derm = skin, -ology = study of."},
+ {q:"'Neuralgia' means pain in a:",o:["bone","nerve","muscle","vein"],a:1,e:"Neur = nerve, -algia = pain."},
+ {q:"'Cardiomegaly' means an enlarged:",o:["kidney","heart","liver","lung"],a:1,e:"Cardio = heart, -megaly = enlargement."}
+],
+[
+ {q:"To 'abstain' means to:",o:["rush in","hold back or refrain","fall asleep","speak loudly"],a:1,e:"Abstain means to refrain from something."},
+ {q:"'Adverse' means:",o:["helpful","harmful","colorful","quiet"],a:1,e:"Adverse means harmful or unfavorable."},
+ {q:"'Benign' means:",o:["dangerous","harmless or not cancerous","painful","large"],a:1,e:"Benign means harmless, not cancerous."},
+ {q:"To 'dilate' means to:",o:["narrow","widen","close","harden"],a:1,e:"Dilate means to widen or open up."},
+ {q:"'Distended' means:",o:["flat","swollen or stretched","dry","cold"],a:1,e:"Distended means swollen or expanded."},
+ {q:"To 'exacerbate' means to:",o:["improve","make worse","ignore","cure"],a:1,e:"Exacerbate means to worsen."},
+ {q:"'Lethargic' means:",o:["energetic","very tired and sluggish","angry","hungry"],a:1,e:"Lethargic means sluggish and drowsy."},
+ {q:"'Occluded' means:",o:["open","blocked","clean","broken"],a:1,e:"Occluded means blocked or obstructed."},
+ {q:"In medicine, 'patent' means:",o:["blocked","open and clear","infected","painful"],a:1,e:"Patent means open and unobstructed."},
+ {q:"'Potent' means:",o:["weak","strong","sweet","cheap"],a:1,e:"Potent means strong or powerful."},
+ {q:"To 'void' often means to:",o:["fill","empty (urinate)","measure","warm"],a:1,e:"Void means to empty, often to urinate."},
+ {q:"To 'comply' means to:",o:["refuse","follow instructions","complain","forget"],a:1,e:"Comply means to follow or obey."},
+ {q:"To 'hydrate' means to:",o:["dry out","add water or fluids","heat up","cool down"],a:1,e:"Hydrate means to add fluids."},
+ {q:"'Incidence' refers to:",o:["a location","how often something occurs","a mistake","a feeling"],a:1,e:"Incidence is the rate at which something occurs."},
+ {q:"'Symmetric' means:",o:["uneven","the same on both sides","very large","broken"],a:1,e:"Symmetric means balanced, the same on both sides."},
+ {q:"'Virulent' describes something that is:",o:["harmless","highly infectious or dangerous","slow","weak"],a:1,e:"Virulent means highly infectious or severe."},
+ {q:"To 'contract' a muscle means to:",o:["relax it","shorten or tighten it","remove it","cool it"],a:1,e:"Contract means to shorten or tighten (it can also mean to catch a disease)."},
+ {q:"To 'deteriorate' means to:",o:["improve","get worse","stay the same","disappear"],a:1,e:"Deteriorate means to decline or worsen."},
+ {q:"If a patient's skin is 'flushed,' it is:",o:["pale and cold","red and warm","dry and cracked","blue"],a:1,e:"Flushed means reddened and warm."},
+ {q:"A 'rationale' is:",o:["a mistake","the reason or basis for something","a type of medicine","a body part"],a:1,e:"A rationale is the underlying reason or justification."}
+]
+]
+};
+
 /* -------------------- helpers -------------------- */
 function $(id){return document.getElementById(id);}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
@@ -694,12 +1247,11 @@ $("nameInput").addEventListener("keydown",function(e){if(e.key==="Enter")$("name
 
 /* -------------------- home -------------------- */
 function subjectCompletion(s){
-  var lc=s.lessons.length, qc=s.questions.length;
+  var lc=s.lessons.length;
   var d=getDone(s.key).length;
-  var best=getBest(s.key);
-  var qf=qc?best/qc:0;
+  var bp=getPct(subjPctKey(s.key));
   var lf=lc?d/lc:0;
-  return {c:0.6*lf+0.4*qf, d:d, lc:lc, best:best, qc:qc};
+  return {c:0.6*lf+0.4*(bp/100), d:d, lc:lc, bestpct:bp};
 }
 function renderHome(){
   var grid=$("grid"); grid.innerHTML="";
@@ -707,7 +1259,7 @@ function renderHome(){
   for(var i=0;i<DATA.length;i++){
     var s=DATA[i]; var p=subjectCompletion(s);
     doneL+=p.d; totL+=p.lc; sum+=p.c;
-    if(p.qc&&p.best/p.qc>=0.75)passed++;
+    if(p.bestpct>=75)passed++;
     var card=document.createElement("button");
     card.className="scard"; card.setAttribute("data-i",i);
     card.innerHTML=
@@ -715,7 +1267,7 @@ function renderHome(){
       '<div class="t">'+esc(s.name)+'</div>'+
       '<div class="b">'+esc(s.blurb)+'</div>'+
       '<div class="bar"><i style="width:'+Math.round(p.c*100)+'%"></i></div>'+
-      '<div class="meta"><span>'+p.d+'/'+p.lc+' lessons</span><span>Best quiz '+p.best+'/'+p.qc+'</span></div>';
+      '<div class="meta"><span>'+p.d+'/'+p.lc+' lessons</span><span>'+(p.bestpct>0?'Best quiz '+p.bestpct+'%':'Quiz not started')+'</span></div>';
     card.onclick=(function(idx){return function(){openSubject(idx);};})(i);
     grid.appendChild(card);
   }
@@ -997,73 +1549,111 @@ if(tts.synth){
   }
 }
 
-/* -------------------- practice / quiz -------------------- */
-var quiz={qi:0,score:0,answered:false};
-function renderPractice(){startQuiz();}
-function startQuiz(){
-  quiz.qi=0; quiz.score=0; quiz.answered=false;
+/* -------------------- practice / quiz (per sub-topic banks) -------------------- */
+var ROUND=10;
+var quiz={order:[],pos:0,score:0,answered:false,lessonIdx:-1,label:"",curOpts:[]};
+function shuffle(a){var r=a.slice();for(var i=r.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=r[i];r[i]=r[j];r[j]=t;}return r;}
+function bankFor(key,li){var subj=BANKS[key];if(!subj)return [];if(li>=0)return subj[li]?subj[li]:[];var all=[];for(var i=0;i<subj.length;i++){all=all.concat(subj[i]);}return all;}
+function lqKey(key,li){return "cc_lq_"+key+"_"+li;}
+function subjPctKey(key){return "cc_bestpct_"+key;}
+function getPct(k){var v=parseInt(lsGet(k,"0"),10);return isNaN(v)?0:v;}
+function setPctIf(k,v){if(v>getPct(k))lsSet(k,String(v));}
+function renderPractice(){
+  var box=$("pane-practice");
+  var subj=BANKS[CUR.key]||[];
+  var html='<div class="pchooser">';
+  html+='<p class="chooseintro">Pick a lesson to practice, or choose Mixed review. Each round gives you '+ROUND+' fresh questions with the answers shuffled — you can keep going for as long as you like.</p>';
+  for(var i=0;i<CUR.lessons.length;i++){
+    var bp=getPct(lqKey(CUR.key,i));
+    var cnt=subj[i]?subj[i].length:0;
+    html+='<button class="qpick" data-l="'+i+'">'+
+      '<span class="qpt">'+esc(CUR.lessons[i].t)+'</span>'+
+      '<span class="qpm">'+cnt+' questions'+(bp>0?' &middot; best '+bp+'%':'')+'</span>'+
+      '</button>';
+  }
+  var total=bankFor(CUR.key,-1).length;
+  var mp=getPct(subjPctKey(CUR.key));
+  html+='<button class="qpick mixed" data-l="-1">'+
+    '<span class="qpt">Mixed review</span>'+
+    '<span class="qpm">All '+total+' questions &middot; shuffled'+(mp>0?' &middot; best '+mp+'%':'')+'</span>'+
+    '</button>';
+  html+='</div>';
+  box.innerHTML=html;
+  var picks=document.querySelectorAll("#pane-practice .qpick");
+  for(var p=0;p<picks.length;p++){
+    picks[p].onclick=(function(el){return function(){beginRound(parseInt(el.getAttribute("data-l"),10));};})(picks[p]);
+  }
+}
+function beginRound(li){
+  var bank=bankFor(CUR.key,li);
+  quiz.lessonIdx=li;
+  quiz.label=(li>=0?CUR.lessons[li].t:"Mixed review");
+  var sh=shuffle(bank);
+  var take=sh.length<ROUND?sh.length:ROUND;
+  quiz.order=sh.slice(0,take);
+  quiz.pos=0; quiz.score=0; quiz.answered=false;
   drawQuestion();
 }
 function drawQuestion(){
   var box=$("pane-practice");
-  var qs=CUR.questions, n=qs.length, i=quiz.qi;
+  var n=quiz.order.length, i=quiz.pos;
   if(i>=n){drawResult();return;}
-  var q=qs[i];
-  var opts="";
-  for(var o=0;o<q.o.length;o++){
-    opts+='<button class="opt" data-o="'+o+'">'+esc(q.o[o])+'</button>';
-  }
+  var q=quiz.order[i];
+  var opts=[];
+  for(var o=0;o<q.o.length;o++){opts.push({t:q.o[o],c:(o===q.a)});}
+  opts=shuffle(opts); quiz.curOpts=opts;
+  var ob="";
+  for(var k=0;k<opts.length;k++){ob+='<button class="opt" data-k="'+k+'">'+esc(opts[k].t)+'</button>';}
   box.innerHTML=
     '<div class="quiz">'+
-      '<div class="qtop"><span class="qcount">Question '+(i+1)+' of '+n+'</span><span class="qcount">Score '+quiz.score+'</span></div>'+
+      '<div class="qtop"><span class="qcount">'+esc(quiz.label)+' &middot; Q'+(i+1)+' of '+n+'</span><span class="qcount">Score '+quiz.score+'</span></div>'+
       '<div class="qbar"><i style="width:'+Math.round(i/n*100)+'%"></i></div>'+
       '<div class="qq">'+esc(q.q)+'</div>'+
-      '<div id="opts">'+opts+'</div>'+
+      '<div id="opts">'+ob+'</div>'+
       '<div class="expl" id="expl"><b>Why:</b> '+esc(q.e)+'</div>'+
       '<div class="qnav" id="qnav"></div>'+
     '</div>';
   quiz.answered=false;
-  var ob=document.querySelectorAll("#opts .opt");
-  for(var b=0;b<ob.length;b++){
-    ob[b].onclick=(function(el){return function(){answer(parseInt(el.getAttribute("data-o"),10));};})(ob[b]);
+  var btns=document.querySelectorAll("#opts .opt");
+  for(var b=0;b<btns.length;b++){
+    btns[b].onclick=(function(el){return function(){answer(parseInt(el.getAttribute("data-k"),10));};})(btns[b]);
   }
 }
-function answer(choice){
+function answer(k){
   if(quiz.answered)return; quiz.answered=true;
-  var q=CUR.questions[quiz.qi];
-  var ob=document.querySelectorAll("#opts .opt");
-  for(var b=0;b<ob.length;b++){
-    ob[b].setAttribute("disabled","disabled");
-    var oi=parseInt(ob[b].getAttribute("data-o"),10);
-    if(oi===q.a){ob[b].className="opt correct";ob[b].innerHTML=ob[b].innerHTML+'<span class="mk">✓</span>';}
-    else if(oi===choice){ob[b].className="opt wrong";ob[b].innerHTML=ob[b].innerHTML+'<span class="mk">✗</span>';}
+  var opts=quiz.curOpts;
+  var btns=document.querySelectorAll("#opts .opt");
+  for(var b=0;b<btns.length;b++){
+    btns[b].setAttribute("disabled","disabled");
+    var ki=parseInt(btns[b].getAttribute("data-k"),10);
+    if(opts[ki].c){btns[b].className="opt correct";btns[b].innerHTML=btns[b].innerHTML+'<span class="mk">✓</span>';}
+    else if(ki===k){btns[b].className="opt wrong";btns[b].innerHTML=btns[b].innerHTML+'<span class="mk">✗</span>';}
   }
-  if(choice===q.a)quiz.score++;
+  if(opts[k].c)quiz.score++;
   $("expl").className="expl show";
-  var last=(quiz.qi===CUR.questions.length-1);
+  var last=(quiz.pos===quiz.order.length-1);
   $("qnav").innerHTML='<button class="donebtn" id="nextQ">'+(last?"See results":"Next question ›")+'</button>';
-  $("nextQ").onclick=function(){quiz.qi++;drawQuestion();};
+  $("nextQ").onclick=function(){quiz.pos++;drawQuestion();};
 }
 function drawResult(){
-  var n=CUR.questions.length, sc=quiz.score, pct=Math.round(sc/n*100);
-  setBest(CUR.key,sc);
+  var n=quiz.order.length, sc=quiz.score, pct=n?Math.round(sc/n*100):0;
+  if(quiz.lessonIdx>=0)setPctIf(lqKey(CUR.key,quiz.lessonIdx),pct);
+  setPctIf(subjPctKey(CUR.key),pct);
   var pass=pct>=75;
-  var msg=pass?"Well done — that's a passing score on this section. Keep it up!":"Good effort. Review the lessons above and try again — you'll get there.";
+  var msg=pass?"Well done — that's a passing score. Keep going!":"Good effort. Review the lesson, then try another round — you'll get there.";
   var box=$("pane-practice");
   box.innerHTML=
     '<div class="quiz"><div class="qresult">'+
       '<div class="big">'+pct+'%</div>'+
-      '<div class="rlabel">'+sc+' of '+n+' correct'+(pass?"  ·  passing":"")+'</div>'+
+      '<div class="rlabel">'+sc+' of '+n+' correct &middot; '+esc(quiz.label)+(pass?"  ·  passing":"")+'</div>'+
       '<div class="msg">'+esc(msg)+'</div>'+
-      '<button class="donebtn" id="retry">Try again</button> '+
-      '<button class="navbtn" id="toLessons" style="margin-left:8px">Back to lessons</button>'+
+      '<button class="donebtn" id="again">New round</button> '+
+      '<button class="navbtn" id="toChoose" style="margin-left:8px">Pick another</button>'+
     '</div></div>';
-  $("retry").onclick=function(){startQuiz();};
-  $("toLessons").onclick=function(){setTab("learn");};
+  $("again").onclick=function(){beginRound(quiz.lessonIdx);};
+  $("toChoose").onclick=function(){renderPractice();};
   if(pass)confetti();
-  renderHomeQuiet();
 }
-function renderHomeQuiet(){/* refresh stored progress without leaving view */}
 
 /* -------------------- videos -------------------- */
 function ytEmbed(id){return "https://www.youtube.com/embed/"+id+"?rel=0";}
